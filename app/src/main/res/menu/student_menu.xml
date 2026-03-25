@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="HardcodedText">
+    <group android:checkableBehavior="single">
+        <item
+            android:icon="@drawable/car"
+            android:id="@+id/profile"
+            android:title="Profile" />
+
+        <item
+            android:icon="@drawable/car"
+            android:id="@+id/my_schedule"
+            android:title="My Schedule" />
+
+        <item
+            android:icon="@drawable/car"
+            android:id="@+id/my_attendance"
+            android:title="My Attendance" />
+
+        <item
+            android:icon="@drawable/car"
+            android:id="@+id/view_teacher_today"
+            android:title="View Teacher Today" />
+
+
+        <item
+            android:icon="@drawable/car"
+            android:id="@+id/absent_request"
+            android:title="Absent Request" />
+
+        <item
+            android:icon="@drawable/car"
+            android:id="@+id/logout"
+            android:title="Logout"
+            />
+    </group>
+</menu>

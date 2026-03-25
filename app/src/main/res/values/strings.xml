@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">AttendEaseSTI</string>
+    <string-array name="roles">
+        <item>Choose your role</item>
+        <item>Student</item>
+        <item>Teacher</item>
+        <item>Head Office</item>
+    </string-array>
+    <string name="nav_open">Open</string>
+    <string name="nav_close">Close</string>
+</resources>

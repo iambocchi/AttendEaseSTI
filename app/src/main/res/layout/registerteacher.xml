@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@drawable/background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/cards"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="4dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="10dp"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+<!--                register-->
+                <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Register Teacher"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_margin="20sp"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:boxCornerRadiusBottomEnd="35dp"
+                    app:boxCornerRadiusBottomStart="35dp"
+                    app:boxCornerRadiusTopEnd="35dp"
+                    app:boxCornerRadiusTopStart="35dp"
+                    android:hint="Name"
+                    android:autofillHints="name"
+                    android:background="@drawable/inputtestdesign">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/name_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginBottom="10dp"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+<!--                email-->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:boxCornerRadiusBottomEnd="35dp"
+                    app:boxCornerRadiusBottomStart="35dp"
+                    app:boxCornerRadiusTopEnd="35dp"
+                    app:boxCornerRadiusTopStart="35dp"
+                    android:hint="Email">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:autofillHints="emailAddress"
+                        android:id="@+id/email_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginBottom="10dp"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+<!--                password-->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:autofillHints="password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:boxCornerRadiusBottomEnd="35dp"
+                    app:boxCornerRadiusBottomStart="35dp"
+                    app:boxCornerRadiusTopEnd="35dp"
+                    app:boxCornerRadiusTopStart="35dp"
+                    android:hint="Password"
+                    app:endIconMode="password_toggle">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/password_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginBottom="10dp"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <Spinner
+
+                    android:id="@+id/departmentDropdown"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:spinnerMode="dropdown"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/round"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Schedule"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_margin="20sp"/>
+
+                <Button
+                    android:id="@+id/regisAddSched"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:text="Add Schedule"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    android:backgroundTint="#4764C1"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+<!--        button below-->
+        <Button
+            android:id="@+id/regisSave"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            android:text="Save"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:backgroundTint="#B87830"/>
+        <Button
+            android:id="@+id/regisCancel"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            android:text="Cancel"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:backgroundTint="#8F8880"/>
+
+
+    </LinearLayout>
+</ScrollView>

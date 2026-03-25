@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@drawable/background">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/cards"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="4dp"
+            android:layout_margin="25dp">
+
+            <CalendarView
+                android:id="@+id/calendarView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/cards2"
+            android:layout_centerHorizontal="true"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="4dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_below="@+id/cards"
+
+            android:background="@color/white">
+
+
+            <!--        the items below the calendar-->
+            <LinearLayout
+                android:id="@+id/cardBelowCalendar"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <SearchView
+                    android:id="@+id/search_bar"
+                    android:iconifiedByDefault="false"
+                    android:queryHint="Search Teachers..."
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/round"/>
+                <!--            <shape xmlns:android="http://schemas.android.com/apk/res/android">-->
+                <!--                <solid android:color="#d8cbc4" /> &lt;!&ndash; The bar's background color &ndash;&gt;-->
+                <!--                <corners android:radius="24dp" /> &lt;!&ndash; Increase for more roundness &ndash;&gt;-->
+                <!--                <padding-->
+                <!--                    android:left="10dp"-->
+                <!--                    android:right="10dp"-->
+                <!--                    android:top="4dp"-->
+                <!--                    android:bottom="4dp"-->
+
+                <!--                    />-->
+                <!--            </shape>-->
+
+                <!--            item 1-->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="4dp"
+                    app:cardBackgroundColor="#CBB9A5">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/teachImage"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:src="@drawable/ic_avatar_placeholder"  />
+
+                        <TextView
+                            android:id="@+id/prof1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_toRightOf="@id/teachImage"
+                            android:text="PROF. SARAH GERONIMO"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/email1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/prof1"
+                            android:layout_marginLeft="10dp"
+                            android:layout_toRightOf="@id/teachImage"
+                            android:text="sarah.johnson@school.edu" />
+
+                        <TextView
+                            android:id="@+id/course1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/email1"
+                            android:layout_marginLeft="10dp"
+                            android:layout_toRightOf="@id/teachImage"
+                            android:text="Computer Science"
+                            android:textColor="#c89d7c"
+                            android:textStyle="bold" />
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/course1"
+                            android:layout_margin="10dp"
+                            android:layout_toRightOf="@id/teachImage"
+                            android:backgroundTint="#80ef80"
+                            android:text="Success" />
+
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!--            item 2-->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="4dp"
+                    app:cardBackgroundColor="#CBB9A5">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:id="@+id/teachImage1"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:src="@drawable/ic_avatar_placeholder"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/prof2"
+                            android:textStyle="bold"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_toRightOf="@id/teachImage1"
+                            android:text="PROF. SARAH GERONIMO"/>
+                        <TextView
+                            android:id="@+id/email2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="sarah.johnson@school.edu"
+                            android:layout_below="@+id/prof2"
+                            android:layout_marginLeft="10dp"
+                            android:layout_toRightOf="@id/teachImage1"/>
+                        <TextView
+                            android:id="@+id/course2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Computer Science"
+                            android:textStyle="bold"
+                            android:textColor="#c89d7c"
+                            android:layout_below="@+id/email2"
+                            android:layout_marginLeft="10dp"
+                            android:layout_toRightOf="@id/teachImage1"/>
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/course2"
+                            android:layout_margin="10dp"
+                            android:layout_toRightOf="@id/teachImage1"
+                            android:backgroundTint="#80ef80"
+                            android:text="Success"/>
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+                <!--            item 2-->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="4dp"
+                    app:cardBackgroundColor="#CBB9A5">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:id="@+id/teachImage2"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:src="@drawable/ic_avatar_placeholder" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/prof3"
+                            android:textStyle="bold"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_toRightOf="@id/teachImage2"
+                            android:text="PROF. SARAH GERONIMO"/>
+                        <TextView
+                            android:id="@+id/email3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="sarah.johnson@school.edu"
+                            android:layout_below="@+id/prof3"
+                            android:layout_marginLeft="10dp"
+                            android:layout_toRightOf="@id/teachImage2"/>
+                        <TextView
+                            android:id="@+id/course3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Computer Science"
+                            android:textStyle="bold"
+                            android:textColor="#c89d7c"
+                            android:layout_below="@+id/email3"
+                            android:layout_marginLeft="10dp"
+                            android:layout_toRightOf="@id/teachImage2"/>
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/course3"
+                            android:layout_margin="10dp"
+                            android:layout_toRightOf="@id/teachImage2"
+                            android:backgroundTint="#80ef80"
+                            android:text="Success"/>
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+</ScrollView>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="HardcodedText">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/profile"
+            android:title="Profile" />
+
+        <item
+            android:id="@+id/student_attendance"
+            android:title="Student Attendance" />
+
+        <item
+            android:id="@+id/my_schedule"
+            android:title="My Schedule" />
+
+
+        <item
+            android:id="@+id/absence_request"
+            android:title="Absence Request" />
+
+        <item
+            android:id="@+id/logout"
+            android:title="Logout" />
+    </group>
+</menu>

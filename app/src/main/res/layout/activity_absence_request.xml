@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:id="@+id/teacher_attendance">
+
+    <ImageView
+        android:id="@+id/ivMenuIcon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_margin="16dp"
+        android:src="@drawable/burger_menu"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="#333333" />
+
+    <TextView
+        android:id="@+id/tvHeaderTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:text="AttendEase"
+        android:textColor="#333333"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/ivMenuIcon"
+        app:layout_constraintStart_toEndOf="@id/ivMenuIcon"
+        app:layout_constraintTop_toTopOf="@id/ivMenuIcon" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivMenuIcon"
+        app:cardBackgroundColor="@color/white">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Teacher Attendance"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/search_bar"
+                    android:drawableStart="@android:drawable/ic_menu_search"
+                    android:drawablePadding="10dp"
+                    android:hint="Search teachers..."
+                    android:paddingHorizontal="13dp"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="12dp"
+                    android:text="My Teacher"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    app:cardBackgroundColor="#FFF5E9"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="0dp">
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="12dp">
+                        <ImageView
+                            android:id="@+id/img1"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/ic_avatar_placeholder"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                        <TextView
+                            android:id="@+id/name1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:text="Prof. Sarah Johnson"
+                            android:textColor="#000000"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toEndOf="@id/img1"
+                            app:layout_constraintTop_toTopOf="@id/img1" />
+                        <TextView
+                            android:id="@+id/email1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="sarah.johnson@school.edu"
+                            android:textColor="#777777"
+                            android:textSize="11sp"
+                            app:layout_constraintStart_toStartOf="@id/name1"
+                            app:layout_constraintTop_toBottomOf="@id/name1" />
+                        <TextView
+                            android:id="@+id/sub1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Computer Programming"
+                            android:textColor="#D4A017"
+                            android:textSize="10sp"
+                            app:layout_constraintStart_toStartOf="@id/name1"
+                            app:layout_constraintTop_toBottomOf="@id/email1" />
+                        <com.google.android.material.button.MaterialButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="36dp"
+                            android:layout_marginTop="8dp"
+                            android:backgroundTint="#00E676"
+                            android:text="Present"
+                            android:textAllCaps="false"
+                            android:textSize="12sp"
+                            app:cornerRadius="20dp"
+                            app:icon="@android:drawable/ic_menu_mylocation"
+                            app:layout_constraintStart_toStartOf="@id/name1"
+                            app:layout_constraintTop_toBottomOf="@id/sub1" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    app:cardBackgroundColor="#FFF5E9"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="0dp">
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="12dp">
+                        <ImageView
+                            android:id="@+id/img2"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/ic_avatar_placeholder"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                        <TextView
+                            android:id="@+id/name2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:text="Prof. John Mendoza"
+                            android:textColor="#000000"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toEndOf="@id/img2"
+                            app:layout_constraintTop_toTopOf="@id/img2" />
+                        <TextView
+                            android:id="@+id/email2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="johnmendoza@school.edu"
+                            android:textColor="#777777"
+                            android:textSize="11sp"
+                            app:layout_constraintStart_toStartOf="@id/name2"
+                            app:layout_constraintTop_toBottomOf="@id/name2" />
+                        <TextView
+                            android:id="@+id/sub2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="NSTP 1\nP.E 1"
+                            android:textColor="#D4A017"
+                            android:textSize="10sp"
+                            app:layout_constraintStart_toStartOf="@id/name2"
+                            app:layout_constraintTop_toBottomOf="@id/email2" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="36dp"
+                            android:layout_marginTop="8dp"
+                            android:backgroundTint="#00E676"
+                            android:text="Present"
+                            android:textAllCaps="false"
+                            android:textSize="12sp"
+                            app:cornerRadius="20dp"
+                            app:icon="@android:drawable/ic_menu_mylocation"
+                            app:layout_constraintStart_toStartOf="@id/name2"
+                            app:layout_constraintTop_toBottomOf="@id/sub2" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    app:cardBackgroundColor="#FFF5E9"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="0dp">
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="12dp">
+                        <ImageView
+                            android:id="@+id/img3"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/ic_avatar_placeholder"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                        <TextView
+                            android:id="@+id/name3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:text="Prof. Mark Garcia"
+                            android:textColor="#000000"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toEndOf="@id/img3"
+                            app:layout_constraintTop_toTopOf="@id/img3" />
+                        <TextView
+                            android:id="@+id/email3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="markgarcia@school.edu"
+                            android:textColor="#777777"
+                            android:textSize="11sp"
+                            app:layout_constraintStart_toStartOf="@id/name3"
+                            app:layout_constraintTop_toBottomOf="@id/name3" />
+                        <TextView
+                            android:id="@+id/sub3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Understanding the Self"
+                            android:textColor="#D4A017"
+                            android:textSize="10sp"
+                            app:layout_constraintStart_toStartOf="@id/name3"
+                            app:layout_constraintTop_toBottomOf="@id/email3" />
+                        <com.google.android.material.button.MaterialButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="36dp"
+                            android:layout_marginTop="8dp"
+                            android:backgroundTint="#D50000"
+                            android:text="Absent"
+                            android:textAllCaps="false"
+                            android:textSize="12sp"
+                            app:cornerRadius="20dp"
+                            app:icon="@android:drawable/ic_delete"
+                            app:layout_constraintStart_toStartOf="@id/name3"
+                            app:layout_constraintTop_toBottomOf="@id/sub3" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="12dp"
+                    android:text="Teacher"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    app:cardBackgroundColor="#FFF5E9"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="0dp">
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="12dp">
+                        <ImageView
+                            android:id="@+id/img4"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/ic_avatar_placeholder"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                        <TextView
+                            android:id="@+id/name4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:text="Prof. Maria Lopez"
+                            android:textColor="#000000"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toEndOf="@id/img4"
+                            app:layout_constraintTop_toTopOf="@id/img4" />
+                        <TextView
+                            android:id="@+id/email4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="marialopez@school.edu"
+                            android:textColor="#777777"
+                            android:textSize="11sp"
+                            app:layout_constraintStart_toStartOf="@id/name4"
+                            app:layout_constraintTop_toBottomOf="@id/name4" />
+                        <com.google.android.material.button.MaterialButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="36dp"
+                            android:layout_marginTop="8dp"
+                            android:backgroundTint="#00E676"
+                            android:text="Present"
+                            android:textAllCaps="false"
+                            android:textSize="12sp"
+                            app:cornerRadius="20dp"
+                            app:icon="@android:drawable/ic_menu_mylocation"
+                            app:layout_constraintStart_toStartOf="@id/name4"
+                            app:layout_constraintTop_toBottomOf="@id/email4" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+        </ScrollView>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
