@@ -59,13 +59,13 @@ public class HeadOfficeActivity extends AppCompatActivity {
                 inflateLayout(R.layout.headoffice_profile);
 
             } else if (id == R.id.teacher_attendance) {
-//                inflateLayout(R.layout.#############);
+                inflateLayout(R.layout.teacher_student_attendance);
 
             } else if (id == R.id.teacher_management) {
 //                inflateLayout(R.layout.###########);
 
             } else if (id == R.id.calendar) {
-//                inflateLayout(R.layout.##########);
+                inflateLayout(R.layout.headoffice_calendar);
 
             } else if (id == R.id.logout) {
                 // Usually a method to clear session and redirect to LoginActivity

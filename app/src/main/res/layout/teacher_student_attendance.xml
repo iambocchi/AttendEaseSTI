@@ -4,43 +4,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFDDC1">
-
-    <ImageView
-    android:id="@+id/ivMenu"
-    android:layout_width="32dp"
-    android:layout_height="32dp"
-    android:layout_margin="16dp"
-    android:src="@drawable/burger_menu"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="AttendEase"
-        android:textColor="#333333"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@id/ivMenu"
-        app:layout_constraintStart_toEndOf="@id/ivMenu"
-        app:layout_constraintTop_toTopOf="@id/ivMenu" />
+    android:background="@drawable/background">
 
     <androidx.cardview.widget.CardView
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="16dp"
+        app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="20dp"
         app:cardElevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ivMenu">
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="666dp"
             android:orientation="vertical"
             android:padding="20dp">
 
@@ -161,20 +141,9 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Year 3 - BS Computer Science"
+                                    android:text="Year 3 - BS Computer Science/Regular"
                                     android:textSize="11sp" />
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="4dp"
-                                    android:background="@drawable/black"
-                                    android:paddingHorizontal="12dp"
-                                    android:paddingVertical="2dp"
-                                    android:text="Regular"
-                                    android:textColor="#FFFFFF"
-                                    android:textSize="10sp"
-                                    android:textStyle="bold" />
                             </LinearLayout>
 
                             <ImageView
@@ -233,17 +202,6 @@
                                     android:text="Year 3 - BS Computer Science"
                                     android:textSize="11sp" />
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="4dp"
-                                    android:background="@drawable/gray"
-                                    android:paddingHorizontal="12dp"
-                                    android:paddingVertical="2dp"
-                                    android:text="Irregular"
-                                    android:textColor="#FFFFFF"
-                                    android:textSize="10sp"
-                                    android:textStyle="bold" />
                             </LinearLayout>
 
                             <ImageView

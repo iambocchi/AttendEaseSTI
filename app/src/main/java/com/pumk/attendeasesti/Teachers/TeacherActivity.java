@@ -41,7 +41,7 @@ public class TeacherActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         if (savedInstanceState == null) {
-            View defaultView = getLayoutInflater().inflate(R.layout.teacher_calendar, container, false);
+            View defaultView = getLayoutInflater().inflate(R.layout.headoffice_calendar, container, false);
             container.addView(defaultView);
         }
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -59,7 +59,7 @@ public class TeacherActivity extends AppCompatActivity {
                 inflateLayout(R.layout.teacher_profile);
 
             } else if (id == R.id.student_attendance) {
-//                inflateLayout(R.layout.#######);
+                inflateLayout(R.layout.teacher_student_attendance);
 
             } else if (id == R.id.my_schedule) {
 //                inflateLayout(R.layout.studentschedule1);

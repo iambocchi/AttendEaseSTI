@@ -25,11 +25,13 @@
             <CalendarView
                 android:id="@+id/calendarView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:background="@color/white"/>
 
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            app:cardBackgroundColor="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/cards2"
@@ -60,22 +62,10 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:background="@drawable/round"/>
-                <!--            <shape xmlns:android="http://schemas.android.com/apk/res/android">-->
-                <!--                <solid android:color="#d8cbc4" /> &lt;!&ndash; The bar's background color &ndash;&gt;-->
-                <!--                <corners android:radius="24dp" /> &lt;!&ndash; Increase for more roundness &ndash;&gt;-->
-                <!--                <padding-->
-                <!--                    android:left="10dp"-->
-                <!--                    android:right="10dp"-->
-                <!--                    android:top="4dp"-->
-                <!--                    android:bottom="4dp"-->
 
-                <!--                    />-->
-                <!--            </shape>-->
-
-                <!--            item 1-->
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
@@ -138,7 +128,7 @@
                 <!--            item 2-->
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
@@ -194,7 +184,7 @@
                 <!--            item 2-->
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"

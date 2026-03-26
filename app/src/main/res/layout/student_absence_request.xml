@@ -1,40 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background">
 
-    <ImageView
-        android:id="@+id/btnMenu"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_margin="16dp"
-        android:src="@android:drawable/ic_menu_sort_by_size"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:tint="#333333" />
+<!--    <ImageView-->
+<!--        android:id="@+id/btnMenu"-->
+<!--        android:layout_width="30dp"-->
+<!--        android:layout_height="30dp"-->
+<!--        android:layout_margin="16dp"-->
+<!--        android:src="@android:drawable/ic_menu_sort_by_size"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:tint="#333333" />-->
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="AttendEase"
-        android:textColor="#333333"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@id/btnMenu"
-        app:layout_constraintStart_toEndOf="@id/btnMenu"
-        app:layout_constraintTop_toTopOf="@id/btnMenu" />
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="16dp"-->
+<!--        android:text="AttendEase"-->
+<!--        android:textColor="#333333"-->
+<!--        android:textSize="20sp"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintBottom_toBottomOf="@id/btnMenu"-->
+<!--        app:layout_constraintStart_toEndOf="@id/btnMenu"-->
+<!--        app:layout_constraintTop_toTopOf="@id/btnMenu" />-->
 
     <androidx.cardview.widget.CardView
+        app:cardBackgroundColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="20dp"
         app:cardCornerRadius="16dp"
         app:cardElevation="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnMenu">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="20dp">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -74,9 +77,9 @@
                             android:layout_width="55dp"
                             android:layout_height="55dp"
                             android:src="@drawable/ic_avatar_placeholder"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent"/>
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
                             android:id="@+id/name1"
@@ -95,9 +98,9 @@
                             android:text="Computer Programming"
                             android:textColor="#777777"
                             android:textSize="12sp"
+                            app:layout_constraintEnd_toStartOf="@+id/badge1"
                             app:layout_constraintStart_toStartOf="@id/name1"
-                            app:layout_constraintTop_toBottomOf="@id/name1"
-                            app:layout_constraintEnd_toStartOf="@+id/badge1"/>
+                            app:layout_constraintTop_toBottomOf="@id/name1" />
 
                         <TextView
                             android:id="@+id/badge1"
@@ -156,9 +159,9 @@
                             android:layout_width="55dp"
                             android:layout_height="55dp"
                             android:src="@drawable/ic_avatar_placeholder"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent"/>
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
                             android:id="@+id/name2"
@@ -177,9 +180,9 @@
                             android:text="Purposive Communication"
                             android:textColor="#777777"
                             android:textSize="12sp"
+                            app:layout_constraintEnd_toStartOf="@+id/badge2"
                             app:layout_constraintStart_toStartOf="@id/name2"
-                            app:layout_constraintTop_toBottomOf="@id/name2"
-                            app:layout_constraintEnd_toStartOf="@+id/badge2"/>
+                            app:layout_constraintTop_toBottomOf="@id/name2" />
 
                         <TextView
                             android:id="@+id/badge2"
@@ -238,9 +241,9 @@
                             android:layout_width="55dp"
                             android:layout_height="55dp"
                             android:src="@drawable/ic_avatar_placeholder"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent"/>
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
                             android:id="@+id/name3"
@@ -259,9 +262,9 @@
                             android:text="Understanding the Self"
                             android:textColor="#777777"
                             android:textSize="12sp"
+                            app:layout_constraintEnd_toStartOf="@+id/badge3"
                             app:layout_constraintStart_toStartOf="@id/name3"
-                            app:layout_constraintTop_toBottomOf="@id/name3"
-                            app:layout_constraintEnd_toStartOf="@+id/badge3"/>
+                            app:layout_constraintTop_toBottomOf="@id/name3" />
 
                         <TextView
                             android:id="@+id/badge3"
@@ -319,9 +322,9 @@
                             android:layout_width="55dp"
                             android:layout_height="55dp"
                             android:src="@drawable/ic_avatar_placeholder"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent"/>
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
                             android:id="@+id/name4"
@@ -340,9 +343,9 @@
                             android:text="P.E 1"
                             android:textColor="#777777"
                             android:textSize="12sp"
+                            app:layout_constraintEnd_toStartOf="@+id/badge4"
                             app:layout_constraintStart_toStartOf="@id/name4"
-                            app:layout_constraintTop_toBottomOf="@id/name4"
-                            app:layout_constraintEnd_toStartOf="@+id/badge4"/>
+                            app:layout_constraintTop_toBottomOf="@id/name4" />
 
                         <TextView
                             android:id="@+id/badge4"

@@ -22,5 +22,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+//    List all settings: git config --list or git config --list --show-origin
 
 }

@@ -39,6 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/Title"
         android:layout_marginTop="40dp"
+        android:layout_marginHorizontal="20dp"
         android:hint="Email"
         style="@style/Widget.App.TextInputLayout.RoundedOutline">
 
@@ -61,7 +62,7 @@
         android:layout_marginTop="16dp"
         android:hint="Enter your password"
         style="@style/Widget.App.TextInputLayout.RoundedOutline"
-
+        android:layout_marginHorizontal="20dp"
         app:endIconMode="password_toggle"
         app:endIconTint="#555555">
 
@@ -96,7 +97,7 @@
         android:layout_below="@id/passwordContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Select option"
+        android:hint="Choose your role"
         android:layout_marginTop="16dp"
 
       style="@style/Widget.App.TextInputLayout.RoundedOutline"
@@ -104,12 +105,14 @@
         app:endIconMode="dropdown_menu">
 
         <AutoCompleteTextView
+
             android:id="@+id/userType"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:textSize="16sp"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
+            android:layout_marginHorizontal="20dp"
             android:inputType="none"
             android:popupBackground="@android:color/white"/>
 
@@ -117,6 +120,7 @@
 
     <!-- LOGIN BUTTON -->
     <Button
+        android:layout_marginHorizontal="20dp"
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="60dp"
@@ -129,7 +133,6 @@
 
     <!-- FORGOT PASSWORD -->
     <TextView
-
         android:id="@+id/tvForgotPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -41,7 +41,7 @@ public class StudentActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         if (savedInstanceState == null) {
-            View defaultView = getLayoutInflater().inflate(R.layout.studentschedule1, container, false);
+            View defaultView = getLayoutInflater().inflate(R.layout.student_myschedule_today, container, false);
             container.addView(defaultView);
         }
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -58,13 +58,13 @@ public class StudentActivity extends AppCompatActivity {
             if (id == R.id.profile) {
                 inflateLayout(R.layout.studentprofile);
             } else if (id == R.id.my_schedule) {
-                inflateLayout(R.layout.studentschedule1);
+                inflateLayout(R.layout.student_myschedule_today);
             } else if (id == R.id.my_attendance) {
-//                inflateLayout(R.layout.student_attendance);
+                inflateLayout(R.layout.student_myattendance_history);
             } else if (id == R.id.view_teacher_today) {
 //                inflateLayout(R.layout.view_teacher_layout);
             } else if (id == R.id.absent_request) {
-//                inflateLayout(R.layout.absent_request_form);
+                inflateLayout(R.layout.student_absence_request);
             } else if (id == R.id.logout) {
                 Intent intent = new Intent(StudentActivity.this, LoginActivity.class);
                 startActivity(intent);
