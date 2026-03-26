@@ -1,23 +1,85 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.AttendEaseSTI" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
+        <!-- Primary brand color -->
+        <item name="colorPrimary">@color/app_color</item>
+        <!-- Darker variant for the status bar -->
+        <item name="android:statusBarColor">@color/app_color</item>
+        <!-- Customize your theme here. -->
         <item name="drawerArrowStyle">@style/MyDrawerArrowStyle</item>
     </style>
 
     <style name="Theme.AttendEaseSTI" parent="Base.Theme.AttendEaseSTI" />
 
-    <style name="Widget.App.TextInputLayout.RoundedOutline" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+<!--    <style name="Widget.App.TextInputLayout.RoundedOutline" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">-->
+<!--        <item name="boxBackgroundMode">outline</item>-->
+<!--        <item name="boxStrokeWidth">1dp</item>-->
+<!--        <item name="boxStrokeWidthFocused">1dp</item>-->
+<!--        <item name="boxCornerRadiusBottomStart">28dp</item>-->
+<!--        <item name="boxCornerRadiusTopEnd">28dp</item>-->
+<!--        <item name="boxCornerRadiusTopStart">28dp</item>-->
+<!--        <item name="boxCornerRadiusBottomEnd">28dp</item>-->
+<!--        <item name="boxBackgroundColor">@color/white</item>-->
+<!--        <item name="hintTextColor">@color/hint_colors</item>-->
+<!--        <item name="boxStrokeColor">@color/stroke_colors</item>-->
+
+<!--    </style>-->
+
+
+<!--    INPUT TEXT-->
+    <style name="Widget.App.TextInputLayout.RoundedOutline"
+        parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
         <item name="boxBackgroundMode">outline</item>
+
         <item name="boxStrokeWidth">1dp</item>
-        <item name="boxStrokeWidthFocused">1dp</item>
-        <item name="boxCornerRadiusBottomStart">28dp</item>
-        <item name="boxCornerRadiusTopEnd">28dp</item>
+        <item name="boxStrokeWidthFocused">2dp</item>
+
         <item name="boxCornerRadiusTopStart">28dp</item>
+        <item name="boxCornerRadiusTopEnd">28dp</item>
+        <item name="boxCornerRadiusBottomStart">28dp</item>
         <item name="boxCornerRadiusBottomEnd">28dp</item>
-        <item name="boxBackgroundColor">@color/white</item>
+
+        <item name="boxBackgroundColor">@android:color/white</item>
+
+        <!-- Important for visibility -->
         <item name="hintTextColor">@color/hint_colors</item>
+        <item name="android:textColorHint">@color/hint_colors</item>
+
+        <!-- Stroke color selector -->
+        <item name="boxStrokeColor">@color/stroke_colors</item>
+
+    </style>
+
+<!--    <style name="tilAutoComplete" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">-->
+<!--        <item name="boxBackgroundMode">filled</item>-->
+<!--        <item name="boxCornerRadiusBottomStart">28dp</item>-->
+<!--        <item name="boxCornerRadiusTopEnd">28dp</item>-->
+<!--        <item name="boxCornerRadiusTopStart">28dp</item>-->
+<!--        <item name="boxCornerRadiusBottomEnd">28dp</item>-->
+<!--        <item name="boxBackgroundColor">@color/app_color</item>-->
+<!--        <item name="hintTextColor">@color/hint_colors</item>-->
+<!--        <item name="boxStrokeColor">@color/stroke_colors</item>-->
+
+<!--    </style>-->
+
+
+<!--SPINNER-->
+    <style name="tilAutoComplete"
+        parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+
+        <item name="boxBackgroundMode">outline</item>
+        <item name="boxCornerRadiusTopStart">28dp</item>
+        <item name="boxCornerRadiusTopEnd">28dp</item>
+        <item name="boxCornerRadiusBottomStart">28dp</item>
+        <item name="boxCornerRadiusBottomEnd">28dp</item>
+
+        <item name="boxBackgroundColor">@android:color/white</item>
+
+        <item name="hintTextColor">@color/hint_colors</item>
+        <item name="android:textColorHint">@color/hint_colors</item>
+
         <item name="boxStrokeColor">@color/stroke_colors</item>
 
     </style>
@@ -27,7 +89,8 @@
     </style>
 
     <style name="MyDrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
-        <item name="color">@android:color/white</item> </style>
+        <item name="color">@android:color/white</item>
+    </style>
 
 </resources>
 <!--    <item name="boxStrokeColor">@color/black</item>-->

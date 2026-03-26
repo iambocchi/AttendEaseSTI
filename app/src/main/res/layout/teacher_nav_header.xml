@@ -24,13 +24,15 @@
             android:layout_height="wrap_content"
             android:text="I AM TEACHER"
             android:textStyle="bold"
-            android:textSize="18sp"/>
+            android:textSize="18sp"
+            android:textColor="@color/black"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Teacher"
-            android:textSize="14sp"/>
+            android:textSize="14sp"
+            android:textColor="@color/black"/>
     </LinearLayout>
 
 </LinearLayout>

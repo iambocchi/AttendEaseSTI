@@ -7,29 +7,24 @@
     <group android:checkableBehavior="single">
 
         <item
-            android:icon="@drawable/car"
             android:id="@+id/profile"
             android:title="Profile" />
 
         <item
-            android:icon="@drawable/car"
             android:id="@+id/teacher_attendance"
             android:title="Teacher Attendance" />
 
         <item
-            android:icon="@drawable/car"
             android:id="@+id/teacher_management"
             android:title="Teacher Management" />
 
 
         <item
-            android:icon="@drawable/car"
             android:id="@+id/calendar"
             android:title="Calendar" />
 
         <item
             android:id="@+id/logout"
-            android:icon="@drawable/car"
             android:title="Logout" />
     </group>
 </menu>

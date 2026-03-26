@@ -1,6 +1,7 @@
 package com.pumk.attendeasesti;
 
 import android.os.Bundle;
+import android.view.WindowManager;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,7 +22,9 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+
     }
+
 //    List all settings: git config --list or git config --list --show-origin
 
 }

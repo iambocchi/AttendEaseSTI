@@ -94,42 +94,49 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:textColor="@color/profile_color"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="• Campus : STI College Dasmarinas"
                     android:textSize="13sp"
                     android:layout_marginBottom="4dp"/>
                 <TextView
+                    android:textColor="@color/profile_color"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="• Academic level : Tertiary"
                     android:textSize="13sp"
                     android:layout_marginBottom="4dp"/>
                 <TextView
+                    android:textColor="@color/profile_color"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="• Section : BSCS1.1A-2402"
                     android:textSize="13sp"
                     android:layout_marginBottom="4dp"/>
                 <TextView
+                    android:textColor="@color/profile_color"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="• Program : BSCS"
                     android:textSize="13sp"
                     android:layout_marginBottom="4dp"/>
                 <TextView
+                    android:textColor="@color/profile_color"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="• Year level : 1Y1"
                     android:textSize="13sp"
                     android:layout_marginBottom="4dp"/>
                 <TextView
+                    android:textColor="@color/profile_color"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="• Student ID : 2000111111"
                     android:textSize="13sp"
                     android:layout_marginBottom="4dp"/>
                 <TextView
+                    android:textColor="@color/profile_color"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="• Location: TER9"
@@ -137,6 +144,7 @@
             </LinearLayout>
 
             <TextView
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
@@ -147,6 +155,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:textColor="@color/profile_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"

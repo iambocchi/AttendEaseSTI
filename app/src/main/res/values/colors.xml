@@ -3,5 +3,18 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="red">#FF0000</color>
+    <color name="app_color">#FFD7B9</color>
+    <color name="btncolorbrown">#895129</color>
+
+
+    <color name="profile_color">#555555</color>
+    <color name="card_color">#FFF2E4</color>
+
+
+    
+    <color name="brown">#6A3900</color>
+    
+    <color name="selected_color">#FF4081</color>
+    <color name="normal_color">#FFFFFF</color>
 </resources>
 

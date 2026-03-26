@@ -62,10 +62,10 @@ public class TeacherActivity extends AppCompatActivity {
                 inflateLayout(R.layout.teacher_student_attendance);
 
             } else if (id == R.id.my_schedule) {
-//                inflateLayout(R.layout.studentschedule1);
+                inflateLayout(R.layout.teacher_my_schedule);
 
             } else if (id == R.id.absence_request) {
-//                inflateLayout(R.layout.############);
+                inflateLayout(R.layout.teacher_absence_request);
 
             } else if (id == R.id.logout) {
                 Intent intent = new Intent(TeacherActivity.this, LoginActivity.class);

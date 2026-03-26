@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-
+<!--B87C37-->
     <!-- Focused -->
-    <item android:state_focused="true" android:color="#000000"/>  <!-- black -->
+    <item android:state_focused="true" android:color="#895129"/>  <!-- black -->
 
     <!-- Not focused -->
-    <item android:color="#6200EE"/>
+    <item android:color="#895129"/>
 
 </selector>

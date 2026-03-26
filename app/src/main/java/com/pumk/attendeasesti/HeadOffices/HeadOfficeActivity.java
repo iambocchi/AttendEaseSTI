@@ -62,7 +62,7 @@ public class HeadOfficeActivity extends AppCompatActivity {
                 inflateLayout(R.layout.teacher_student_attendance);
 
             } else if (id == R.id.teacher_management) {
-//                inflateLayout(R.layout.###########);
+                inflateLayout(R.layout.headoffice_teacher_management);
 
             } else if (id == R.id.calendar) {
                 inflateLayout(R.layout.headoffice_calendar);

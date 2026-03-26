@@ -6,29 +6,6 @@
     android:background="@drawable/background"
     android:id="@+id/teacher_attendance">
 
-<!--    <ImageView-->
-<!--        android:id="@+id/ivMenuIcon"-->
-<!--        android:layout_width="30dp"-->
-<!--        android:layout_height="30dp"-->
-<!--        android:layout_margin="16dp"-->
-<!--        android:src="@drawable/burger_menu"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:tint="#333333" />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/tvHeaderTitle"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="12dp"-->
-<!--        android:text="AttendEase"-->
-<!--        android:textColor="#333333"-->
-<!--        android:textSize="20sp"-->
-<!--        android:textStyle="bold"-->
-<!--        app:layout_constraintBottom_toBottomOf="@id/ivMenuIcon"-->
-<!--        app:layout_constraintStart_toEndOf="@id/ivMenuIcon"-->
-<!--        app:layout_constraintTop_toTopOf="@id/ivMenuIcon" />-->
-
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="0dp"

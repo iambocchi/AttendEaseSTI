@@ -62,7 +62,7 @@ public class StudentActivity extends AppCompatActivity {
             } else if (id == R.id.my_attendance) {
                 inflateLayout(R.layout.student_myattendance_history);
             } else if (id == R.id.view_teacher_today) {
-//                inflateLayout(R.layout.view_teacher_layout);
+                inflateLayout(R.layout.student_view_teacher_today);
             } else if (id == R.id.absent_request) {
                 inflateLayout(R.layout.student_absence_request);
             } else if (id == R.id.logout) {

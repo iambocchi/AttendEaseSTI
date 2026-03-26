@@ -18,6 +18,7 @@
 <!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <com.google.android.material.imageview.ShapeableImageView
+
         android:id="@+id/ivProfilePic"
         android:layout_width="64dp"
         android:layout_height="64dp"
@@ -39,6 +40,7 @@
         app:layout_constraintTop_toTopOf="@id/ivProfilePic">
 
         <TextView
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sarah Johnson"
@@ -47,10 +49,10 @@
             android:textStyle="bold" />
 
         <TextView
+            android:textColor="@color/profile_color"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Teacher"
-            android:textColor="#666666"
             android:textSize="14sp" />
     </LinearLayout>
 
@@ -74,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:text="Teacher Information"
-                android:textColor="#000000"
+                android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -83,7 +85,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:text="Campus"
-                android:textColor="#000000"
+                android:textColor="@color/black"
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
@@ -95,10 +97,12 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:textColor="@color/profile_color"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="STI College Dasmarinas"
                     android:textSize="13sp"/>
+
 
             </LinearLayout>
 
@@ -108,11 +112,12 @@
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="10dp"
                 android:text="Department"
-                android:textColor="#000000"
+                android:textColor="@color/black"
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
             <TextView
+                android:textColor="@color/profile_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
@@ -131,6 +136,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:textColor="@color/profile_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
@@ -143,11 +149,12 @@
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="10dp"
                 android:text="Email"
-                android:textColor="#000000"
+                android:textColor="@color/black"
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
             <TextView
+                android:textColor="@color/profile_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"

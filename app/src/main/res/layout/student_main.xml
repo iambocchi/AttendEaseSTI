@@ -17,10 +17,12 @@
         android:orientation="vertical">
 
         <androidx.appcompat.widget.Toolbar
+
+            app:itemTextColor="@color/black"
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="#FFD7BA"
+            android:background="@color/app_color"
             android:elevation="4dp"
             android:theme="@style/ThemeOverlay.AppCompat.Light"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
@@ -36,11 +38,16 @@
     </LinearLayout>
 
     <com.google.android.material.navigation.NavigationView
+        android:background="@color/white"
         android:id="@+id/nav_view"
         android:layout_width="260dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         app:menu="@menu/student_menu"
-        app:headerLayout="@layout/student_nav_header"/>
+        app:headerLayout="@layout/student_nav_header"
+
+        app:itemTextColor="@color/black"
+        app:itemIconTint="@color/app_color"
+        app:itemBackground="@drawable/navdrawer_item_background"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>

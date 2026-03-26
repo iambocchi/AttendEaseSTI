@@ -25,7 +25,6 @@
         android:scaleType="centerCrop"
         android:src="@drawable/ic_avatar_placeholder"
         app:layout_constraintStart_toEndOf="@id/ivMenu"
-        app:layout_constraintTop_toTopOf="@id/ivMenu"
         app:shapeAppearanceOverlay="@style/CircleImage" />
 
     <LinearLayout
@@ -60,6 +59,7 @@
         app:cardBackgroundColor="#FFFFFF"
         app:cardCornerRadius="16dp"
         app:cardElevation="4dp"
+        app:cardUseCompatPadding="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ivProfilePic">
@@ -88,6 +88,7 @@
                 android:textStyle="bold" />
 
             <TextView
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
