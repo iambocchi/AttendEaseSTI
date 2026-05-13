@@ -12,15 +12,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AttendEaseSTI">
         <activity
+
             android:name=".HeadOffices.HeadOfficeActivity"
             android:exported="false" />
         <activity
+
             android:name=".Teachers.TeacherActivity"
             android:exported="false" />
         <activity
+
             android:name=".Students.StudentActivity"
             android:exported="false" />
         <activity
+            android:noHistory="true"
             android:name=".Logins.LoginActivity"
             android:exported="true">
             <intent-filter>

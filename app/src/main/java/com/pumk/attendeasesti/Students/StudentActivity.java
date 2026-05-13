@@ -7,80 +7,99 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
-
-import android.view.View;
-import android.widget.FrameLayout;
+import androidx.fragment.app.Fragment;
 
 import androidx.appcompat.widget.Toolbar;
-import com.google.android.material.navigation.NavigationView;
 
+import com.google.android.material.navigation.NavigationView;
 import com.pumk.attendeasesti.Logins.LoginActivity;
 import com.pumk.attendeasesti.R;
-// ... existing imports ...
+import com.pumk.attendeasesti.Students.student_fragments.*;
 
 public class StudentActivity extends AppCompatActivity {
-    private DrawerLayout drawerLayout;
-    private NavigationView navigationView;
-    private Toolbar toolbar;
-    private FrameLayout container; // Better to define this globally
+
+    DrawerLayout drawerLayout;
+    NavigationView navigationView;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         EdgeToEdge.enable(this);
 
-        // Ensure this layout contains the DrawerLayout and the FrameLayout!
         setContentView(R.layout.student_main);
 
-        // Initialize the container once
-        container = findViewById(R.id.fragment_container);
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
+        toolbar = findViewById(R.id.toolbar);
 
-        toolbar = findViewById(R.id.toolbar); // Make sure this ID matches your XML
         setSupportActionBar(toolbar);
 
-        if (savedInstanceState == null) {
-            View defaultView = getLayoutInflater().inflate(R.layout.student_myschedule_today, container, false);
-            container.addView(defaultView);
-        }
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawerLayout, toolbar, R.string.nav_open, R.string.nav_close);
+                this,
+                drawerLayout,
+                toolbar,
+                R.string.nav_open,
+                R.string.nav_close
+        );
 
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
+        // DEFAULT FRAGMENT
+        if (savedInstanceState == null) {
+
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment_container,
+                            new StudentProfileFragment())
+                    .commit();
+        }
+
         navigationView.setNavigationItemSelectedListener(item -> {
+
+            Fragment selectedFragment = null;
+
             int id = item.getItemId();
 
-            // Clear the frame before putting something new in
-            container.removeAllViews();
             if (id == R.id.profile) {
-                inflateLayout(R.layout.studentprofile);
+
+                selectedFragment = new StudentProfileFragment();
+
             } else if (id == R.id.my_schedule) {
-                inflateLayout(R.layout.student_myschedule_today);
+
+                selectedFragment = new StudentMyScheduleFragment();
+
             } else if (id == R.id.my_attendance) {
-                inflateLayout(R.layout.student_myattendance_history);
+
+                selectedFragment = new StudentMyScheduleFragment();
+
             } else if (id == R.id.view_teacher_today) {
-                inflateLayout(R.layout.student_view_teacher_today);
+
+                selectedFragment = new StudentViewTeacherTodayFragment();
+
             } else if (id == R.id.absent_request) {
-                inflateLayout(R.layout.student_absence_request);
+
+                selectedFragment = new StudentAbsentRequestFragment();
+
             } else if (id == R.id.logout) {
-                Intent intent = new Intent(StudentActivity.this, LoginActivity.class);
-                startActivity(intent);
-                // Handle logout logic (e.g., clear session and return to login)
-//                performLogout();
+
+                startActivity(new Intent(this, LoginActivity.class));
+                finish();
             }
-            // ... other items ...
+
+            if (selectedFragment != null) {
+
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragment_container, selectedFragment)
+                        .commit();
+            }
 
             drawerLayout.closeDrawers();
+
             return true;
         });
-    }
-
-    // Helper method to keep your code clean
-    private void inflateLayout(int layoutResId) {
-        View view = getLayoutInflater().inflate(layoutResId, container, false);
-        container.addView(view);
     }
 }

@@ -33,13 +33,26 @@
                 android:textStyle="bold"
                 android:layout_gravity="center"/>
 
-            <Spinner
-                android:id="@+id/spinnerSchedule"
+<!--            <Spinner-->
+<!--                android:id="@+id/spinnerSchedule"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:background="@drawable/round"-->
+<!--                android:paddingStart="12dp" />-->
+
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/searchView"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/round"
-                android:paddingStart="12dp" />
+                android:paddingStart="12dp"
+                android:queryHint="Search teacher..." />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
 
             <TextView
                 android:layout_marginTop="25dp"

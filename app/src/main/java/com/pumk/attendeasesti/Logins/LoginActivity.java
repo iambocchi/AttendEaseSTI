@@ -75,14 +75,14 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private void login() { if (selectedItem.equals("") || selectedItem.equals("Choose your role")) { Toast.makeText(this, "Please select a role first", Toast.LENGTH_SHORT).show(); return; } Intent intent; switch (selectedItem) { case "Student": intent = new Intent(this, StudentActivity.class); break; case "Teacher": intent = new Intent(this, TeacherActivity.class); break; case "Head Office": intent = new Intent(this, HeadOfficeActivity.class); break; default: Toast.makeText(this, "Invalid role", Toast.LENGTH_SHORT).show(); return; } startActivity(intent); }
+//    private void login() { if (selectedItem.equals("") || selectedItem.equals("Choose your role")) { Toast.makeText(this, "Please select a role first", Toast.LENGTH_SHORT).show(); return; } Intent intent; switch (selectedItem) { case "Student": intent = new Intent(this, StudentActivity.class); break; case "Teacher": intent = new Intent(this, TeacherActivity.class); break; case "Head Office": intent = new Intent(this, HeadOfficeActivity.class); break; default: Toast.makeText(this, "Invalid role", Toast.LENGTH_SHORT).show(); return; } startActivity(intent); }
 
 //NEW LOGIN LOGIC
-//    private void login() {
-//
-//        String email = etEmail.getText().toString().trim();
-//        String password = etPassword.getText().toString().trim();
-//
+    private void login() {
+
+        String email = etEmail.getText().toString().trim();
+        String password = etPassword.getText().toString().trim();
+
 //        // ✅ Reset errors
 //        emailContainer.setError(null);
 //        passwordContainer.setError(null);
@@ -104,45 +104,47 @@ public class LoginActivity extends AppCompatActivity {
 //            Toast.makeText(this, "Please select a role first", Toast.LENGTH_SHORT).show();
 //            return;
 //        }
-//
-//        Intent intent;
-//
-//        // 🔐 DEMO LOGIN (role-based)
-//        switch (selectedItem) {
-//
-//            case "Student":
-//                if (email.equals("student@gmail.com") && password.equals("1234")) {
-//                    intent = new Intent(this, StudentActivity.class);
-//                } else {
-//                    Toast.makeText(this, "Invalid Student credentials", Toast.LENGTH_SHORT).show();
-//                    return;
-//                }
-//                break;
-//
-//            case "Teacher":
-//                if (email.equals("teacher@gmail.com") && password.equals("1234")) {
-//                    intent = new Intent(this, TeacherActivity.class);
-//                } else {
-//                    Toast.makeText(this, "Invalid Teacher credentials", Toast.LENGTH_SHORT).show();
-//                    return;
-//                }
-//                break;
-//
-//            case "Head Office":
-//                if (email.equals("admin@gmail.com") && password.equals("1234")) {
-//                    intent = new Intent(this, HeadOfficeActivity.class);
-//                } else {
-//                    Toast.makeText(this, "Invalid Admin credentials", Toast.LENGTH_SHORT).show();
-//                    return;
-//                }
-//                break;
-//
-//            default:
-//                Toast.makeText(this, "Invalid role", Toast.LENGTH_SHORT).show();
-//                return;
-//        }
-//
-//        // ✅ Go to selected activity
-//        startActivity(intent);
-//    }
+
+        Intent intent;
+
+
+        switch (selectedItem) {
+
+            case "Student":
+
+                if (email.equals("") && password.equals("")) {
+                    intent = new Intent(this, StudentActivity.class);
+
+                } else {
+                    Toast.makeText(this, "Invalid Student credentials", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                break;
+
+            case "Teacher":
+                if (email.equals("") && password.equals("")) {
+                    intent = new Intent(this, TeacherActivity.class);
+                } else {
+                    Toast.makeText(this, "Invalid Teacher credentials", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                break;
+
+            case "Head Office":
+                if (email.equals("") && password.equals("")) {
+                    intent = new Intent(this, HeadOfficeActivity.class);
+                } else {
+                    Toast.makeText(this, "Invalid Admin credentials", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                break;
+
+            default:
+                Toast.makeText(this, "Invalid role", Toast.LENGTH_SHORT).show();
+                return;
+        }
+
+        // ✅ Go to selected activity
+        startActivity(intent);
+    }
 }
