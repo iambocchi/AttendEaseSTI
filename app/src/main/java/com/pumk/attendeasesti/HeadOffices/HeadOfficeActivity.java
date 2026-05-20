@@ -14,7 +14,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.google.android.material.navigation.NavigationView;
 
 import com.pumk.attendeasesti.HeadOffices.headoffice_fragments.*;
-import com.pumk.attendeasesti.Logins.LoginActivity;
+import com.pumk.attendeasesti.Authentications.LoginActivity;
 import com.pumk.attendeasesti.R;
 
 public class HeadOfficeActivity extends AppCompatActivity {

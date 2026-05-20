@@ -1,17 +1,28 @@
 package com.pumk.attendeasesti.HeadOffices.headoffice_fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.pumk.attendeasesti.R;
 
 public class HeadOfficeProfileFragment extends Fragment {
+    TextView nametext;
+    TextView campustext;
+    TextView idtext;
+    TextView emailtext;
 
     public HeadOfficeProfileFragment() {
     }
@@ -23,10 +34,65 @@ public class HeadOfficeProfileFragment extends Fragment {
             @Nullable ViewGroup container,
             @Nullable Bundle savedInstanceState) {
 
-        return inflater.inflate(
+        View view = inflater.inflate(
                 R.layout.headoffice_profile,
                 container,
                 false
         );
+
+        nametext = view.findViewById(R.id.headoffice_name);
+        campustext = view.findViewById(R.id.headoffice_campus);
+        idtext = view.findViewById(R.id.headoffice_id);
+        emailtext = view.findViewById(R.id.headoffice_email);
+
+        getCurrentUserData(); // ← inflateProfile() is now called INSIDE this, after data arrives
+        return view;
+    }
+
+    private void getCurrentUserData() {
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+
+        if (currentUser == null) return;
+
+        String email = currentUser.getEmail();
+
+        db.collection("headoffice")
+                .whereEqualTo("email", email)
+                .get()
+                .addOnSuccessListener(querySnapshot -> {
+
+                    if (!querySnapshot.isEmpty()) {
+                        DocumentSnapshot doc = querySnapshot.getDocuments().get(0);
+
+                        // ✅ No "String" keyword — assigns to class fields, not local variables
+                        String name   = doc.getString("name");
+                        String campus = doc.getString("campus");
+                        Long idLong   = doc.getLong("id"); // id is a number in Firestore
+                        String id     = idLong != null ? String.valueOf(idLong) : "";
+
+                        // ✅ Called HERE, inside the callback, after data is ready
+                        inflateProfile(name, campus, id, email);
+
+                    } else {
+                        Toast.makeText(
+                                requireContext(),
+                                "No user document found",
+                                Toast.LENGTH_SHORT
+                        ).show();
+                    }
+                })
+                .addOnFailureListener(e ->
+                        Log.e("UserData", "Error fetching user: " + e.getMessage())
+                );
+    }
+
+    private void inflateProfile(String name, String campus, String id, String email) {
+        nametext.setText(name != null ? name : "");
+        campustext.setText(campus != null ? campus : "");
+        idtext.setText(id != null ? id : "");
+        emailtext.setText(email != null ? email : "");
     }
 }

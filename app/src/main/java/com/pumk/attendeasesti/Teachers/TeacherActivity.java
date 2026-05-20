@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.navigation.NavigationView;
-import com.pumk.attendeasesti.Logins.LoginActivity;
+import com.pumk.attendeasesti.Authentications.LoginActivity;
 import com.pumk.attendeasesti.R;
 import com.pumk.attendeasesti.Teachers.teacher_fragments.*;
 

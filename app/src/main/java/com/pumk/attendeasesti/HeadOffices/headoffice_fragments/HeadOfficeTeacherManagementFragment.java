@@ -1,6 +1,7 @@
 package com.pumk.attendeasesti.HeadOffices.headoffice_fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,8 +12,11 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.pumk.attendeasesti.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.pumk.attendeasesti.HeadOffices.headoffice_adapters.HeadOfficeManagementAdapter;
+import com.pumk.attendeasesti.R;
 import com.pumk.attendeasesti.Teachers.TeacherModel;
 
 import java.util.ArrayList;
@@ -20,9 +24,11 @@ import java.util.List;
 
 public class HeadOfficeTeacherManagementFragment extends Fragment {
 
-    RecyclerView recyclerView;
-    HeadOfficeManagementAdapter adapter;
-    List<TeacherModel> teacherList;
+    private FloatingActionButton fabTeacher;
+    private RecyclerView recyclerViewTeachers;
+    private HeadOfficeManagementAdapter adapter;
+    private List<TeacherModel> teacherList = new ArrayList<>();
+    private FirebaseFirestore db;
 
     public HeadOfficeTeacherManagementFragment() {
     }
@@ -40,42 +46,60 @@ public class HeadOfficeTeacherManagementFragment extends Fragment {
                 false
         );
 
-        recyclerView = view.findViewById(R.id.recyclerViewTeachers);
+        db = FirebaseFirestore.getInstance();
 
-        recyclerView.setLayoutManager(
-                new LinearLayoutManager(getContext())
-        );
+        recyclerViewTeachers = view.findViewById(R.id.recyclerViewTeachers);
+        recyclerViewTeachers.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        teacherList = new ArrayList<>();
+        adapter = new HeadOfficeManagementAdapter(teacherList, teacher -> {
+            // handle teacher item click here if needed
+        });
+        recyclerViewTeachers.setAdapter(adapter);
 
-        // Sample data
-        teacherList.add(new TeacherModel(
-                "Sarah Johnson",
-                "sarah.johnson@school.edu",
-                "BSIT",
-                "Active",
-                R.drawable.ic_avatar_placeholder
-        ));
-
-        teacherList.add(new TeacherModel(
-                "John Smith",
-                "john.smith@school.edu",
-                "BSCS",
-                "Inactive",
-                R.drawable.ic_avatar_placeholder
-        ));
-
-        teacherList.add(new TeacherModel(
-                "Emily Davis",
-                "emily.davis@school.edu",
-                "BSIT",
-                "Active",
-                R.drawable.ic_avatar_placeholder
-        ));
-
-        adapter = new HeadOfficeManagementAdapter(teacherList);
-        recyclerView.setAdapter(adapter);
+        fetchTeachers();
 
         return view;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        loadFragment();
+    }
+
+    private void loadFragment() {
+        fabTeacher = getActivity().findViewById(R.id.floatingRegisterTeacher);
+
+        fabTeacher.setOnClickListener(v -> {
+            getParentFragmentManager()
+                    .beginTransaction()
+                    .replace(
+                            R.id.fragment_container,
+                            new HeadOfficeRegisterTeacherFragment()
+                    )
+                    .addToBackStack(null)
+                    .commit();
+        });
+    }
+
+    private void fetchTeachers() {
+        db.collection("teachers")
+                .get()
+                .addOnSuccessListener(queryDocumentSnapshots -> {
+                    teacherList.clear();
+                    for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
+                        String name       = doc.getString("name");
+                        String email      = doc.getString("email");
+                        String department = doc.getString("department");
+                        String campus     = doc.getString("campus");
+                        int teacher_id    = doc.getLong("teacher_id").intValue();
+
+                        teacherList.add(new TeacherModel(name, email, department, campus, teacher_id));
+                    }
+                    adapter.updateList(teacherList);
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("Firestore", "Error fetching teachers", e);
+                });
     }
 }

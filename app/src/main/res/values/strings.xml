@@ -5,6 +5,26 @@
         <item>Teacher</item>
         <item>Head Office</item>
     </string-array>
+    <string-array name="departments">
+        <item>Information Technology</item>
+        <item>Business and Management</item>
+        <item>Hospitality Management</item>
+        <item>Tourism Management</item>
+        <item>Engineering</item>
+        <item>Arts and Sciences</item>
+        <item>Marinetime</item>
+        <item>Criminal Justice Education</item>
+    </string-array>
+
+    <string-array name="campuses">
+        <item>Alabang</item>
+        <item>Bacoor</item>
+        <item>Batangas</item>
+        <item>Dagupan</item>
+        <item>Dasmarinas</item>
+        <item>Davao</item>
+        <item>Tarlac</item>
+    </string-array>
     <string name="nav_open">Open</string>
     <string name="nav_close">Close</string>
 </resources>

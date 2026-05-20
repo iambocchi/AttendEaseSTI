@@ -1,76 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:fillViewport="true"
-    android:background="@drawable/background">
+    android:background="@drawable/background"
+    android:id="@+id/register_teacher"
+    tools:context=".HeadOffices.headoffice_fragments.HeadOfficeRegisterTeacherFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:id="@+id/cards"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
             app:cardCornerRadius="15dp"
             app:cardElevation="4dp"
             android:layout_marginRight="25dp"
             android:layout_marginLeft="25dp"
             android:layout_marginTop="25dp"
             android:layout_marginBottom="10dp"
-            >
+            app:cardBackgroundColor="@color/white">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-<!--                register-->
+                <!-- Title -->
                 <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Register Teacher"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_margin="20sp"/>
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Register Teacher"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_margin="20sp"/>
 
+                <!-- Name -->
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    style="@style/Widget.App.TextInputLayout.RoundedOutline"
                     app:boxCornerRadiusBottomEnd="35dp"
                     app:boxCornerRadiusBottomStart="35dp"
                     app:boxCornerRadiusTopEnd="35dp"
                     app:boxCornerRadiusTopStart="35dp"
                     android:hint="Name"
                     android:autofillHints="name"
-                    android:background="@drawable/inputtestdesign">
+                    android:textColor="@color/black">
                     <com.google.android.material.textfield.TextInputEditText
+                        android:background="@drawable/rounded_input_white"
                         android:id="@+id/name_input"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textPersonName"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
-                        android:layout_marginBottom="10dp"/>
+                        android:layout_marginBottom="10dp"
+                        android:textColor="@color/black"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
-
-<!--                email-->
+                <!-- Email -->
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    style="@style/Widget.App.TextInputLayout.RoundedOutline"
                     app:boxCornerRadiusBottomEnd="35dp"
                     app:boxCornerRadiusBottomStart="35dp"
                     app:boxCornerRadiusTopEnd="35dp"
                     app:boxCornerRadiusTopStart="35dp"
-                    android:hint="Email">
+                    android:hint="Email"
+                    android:textColor="@color/black">
                     <com.google.android.material.textfield.TextInputEditText
+                        android:background="@drawable/rounded_input_white"
                         android:autofillHints="emailAddress"
                         android:id="@+id/email_input"
                         android:layout_width="match_parent"
@@ -78,15 +86,16 @@
                         android:inputType="textEmailAddress"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
-                        android:layout_marginBottom="10dp"/>
+                        android:layout_marginBottom="10dp"
+                        android:textColor="@color/black"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
-<!--                password-->
+                <!-- Password -->
                 <com.google.android.material.textfield.TextInputLayout
                     android:autofillHints="password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    style="@style/Widget.App.TextInputLayout.RoundedOutline"
                     app:boxCornerRadiusBottomEnd="35dp"
                     app:boxCornerRadiusBottomStart="35dp"
                     app:boxCornerRadiusTopEnd="35dp"
@@ -94,28 +103,70 @@
                     android:hint="Password"
                     app:endIconMode="password_toggle">
                     <com.google.android.material.textfield.TextInputEditText
+                        android:background="@drawable/rounded_input_white"
                         android:id="@+id/password_input"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textPassword"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
-                        android:layout_marginBottom="10dp"/>
+                        android:layout_marginBottom="10dp"
+                        android:textColor="@color/black"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Department Dropdown -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilDepartment"
+                    style="@style/tilAutoComplete"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Department"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="12dp"
+                    app:endIconMode="dropdown_menu">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/departmentDropdown"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        android:textSize="16sp"
+                        android:inputType="none"
+                        android:background="@drawable/round"
+                        android:popupBackground="#FFDDC2"
+                        android:textColor="@color/btncolorbrown"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
 
-                <Spinner
 
-                    android:id="@+id/departmentDropdown"
+                <!-- Campus Dropdown -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilCampus"
+                    style="@style/tilAutoComplete"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:spinnerMode="dropdown"
+                    android:layout_height="wrap_content"
+                    android:hint="Campus"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginBottom="20dp"
-                    android:background="@drawable/round"/>
+                    app:endIconMode="dropdown_menu">
 
+                    <AutoCompleteTextView
+                        android:id="@+id/campusDropdown"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        android:textSize="16sp"
+                        android:inputType="none"
+                        android:background="@drawable/round"
+                        android:popupBackground="#FFDDC2"
+                        android:textColor="@color/btncolorbrown"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Schedule Section -->
                 <TextView
+                    android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Schedule"
@@ -124,6 +175,7 @@
                     android:layout_margin="20sp"/>
 
                 <Button
+                    android:textColor="@color/white"
                     android:id="@+id/regisAddSched"
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
@@ -134,12 +186,13 @@
                     android:textStyle="bold"
                     android:textSize="20dp"
                     android:backgroundTint="#4764C1"/>
+
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-
-<!--        button below-->
+        <!-- Save Button -->
         <Button
+            android:textColor="@color/white"
             android:id="@+id/regisSave"
             android:layout_width="match_parent"
             android:layout_height="70dp"
@@ -150,7 +203,10 @@
             android:textStyle="bold"
             android:textSize="20dp"
             android:backgroundTint="#B87830"/>
+
+        <!-- Cancel Button -->
         <Button
+            android:textColor="@color/white"
             android:id="@+id/regisCancel"
             android:layout_width="match_parent"
             android:layout_height="70dp"
@@ -161,7 +217,6 @@
             android:textStyle="bold"
             android:textSize="20dp"
             android:backgroundTint="#8F8880"/>
-
 
     </LinearLayout>
 </ScrollView>
