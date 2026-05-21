@@ -24,10 +24,11 @@ public class HeadOfficeCalendarFragment extends Fragment {
             @Nullable ViewGroup container,
             @Nullable Bundle savedInstanceState) {
 
-        return inflater.inflate(
+        View view = inflater.inflate(
                 R.layout.headoffice_calendar,
                 container,
                 false
         );
+        return view;
     }
 }

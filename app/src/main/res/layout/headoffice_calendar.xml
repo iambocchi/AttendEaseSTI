@@ -23,11 +23,19 @@
             android:layout_margin="25dp">
 
             <CalendarView
-                android:backgroundTint="@color/white"
                 android:id="@+id/calendarView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"/>
+                android:layout_margin="16dp"
+                android:background="@drawable/calendar_bg"
+                android:elevation="8dp"
+                android:padding="12dp"
+
+                android:focusedMonthDateColor="@android:color/black"
+                android:unfocusedMonthDateColor="#888888"
+                android:weekDayTextAppearance="@style/CalendarWeekStyle"
+                android:dateTextAppearance="@style/CalendarDateStyle"
+                />
 
 
         </androidx.cardview.widget.CardView>
@@ -86,7 +94,7 @@
                             android:src="@drawable/ic_avatar_placeholder"  />
 
                         <TextView
-                            android:id="@+id/prof1"
+                            android:id="@+id/name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
@@ -96,19 +104,19 @@
                             android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/email1"
+                            android:id="@+id/email"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/prof1"
+                            android:layout_below="@+id/name"
                             android:layout_marginLeft="10dp"
                             android:layout_toRightOf="@id/teachImage"
                             android:text="sarah.johnson@school.edu" />
 
                         <TextView
-                            android:id="@+id/course1"
+                            android:id="@+id/course"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/email1"
+                            android:layout_below="@+id/email"
                             android:layout_marginLeft="10dp"
                             android:layout_toRightOf="@id/teachImage"
                             android:text="Computer Science"
@@ -118,11 +126,11 @@
                         <Button
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/course1"
+                            android:layout_below="@id/course"
                             android:layout_margin="10dp"
                             android:layout_toRightOf="@id/teachImage"
                             android:backgroundTint="#80ef80"
-                            android:text="Success" />
+                            android:text="Present" />
 
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>

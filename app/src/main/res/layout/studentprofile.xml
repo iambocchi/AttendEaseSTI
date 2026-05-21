@@ -38,6 +38,7 @@
         app:layout_constraintTop_toTopOf="@id/ivProfilePic">
 
         <TextView
+            android:id="@+id/student_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Andrea Cruz"
@@ -92,55 +93,152 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="8dp"
                 android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:textColor="@color/profile_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="• Campus : "
+                        android:textSize="13sp"
+                        android:layout_marginBottom="4dp"/>
+                    <TextView
+                        android:id="@+id/student_campus"
+                        android:textColor="@color/profile_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="STI College Dasmarinas"
+                        android:textSize="13sp"
+                        android:layout_marginBottom="4dp"/>
+                </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
                 <TextView
                     android:textColor="@color/profile_color"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="• Campus : STI College Dasmarinas"
+                    android:text="• Academic level : "
                     android:textSize="13sp"
                     android:layout_marginBottom="4dp"/>
-                <TextView
-                    android:textColor="@color/profile_color"
+                    <TextView
+                        android:id="@+id/student_academic_level"
+                        android:textColor="@color/profile_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tertiary"
+                        android:textSize="13sp"
+                        android:layout_marginBottom="4dp"/>
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="• Academic level : Tertiary"
-                    android:textSize="13sp"
-                    android:layout_marginBottom="4dp"/>
-                <TextView
-                    android:textColor="@color/profile_color"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:textColor="@color/profile_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="• Section : "
+                        android:textSize="13sp"
+                        android:layout_marginBottom="4dp"/>
+                    <TextView
+                        android:id="@+id/student_section"
+                        android:textColor="@color/profile_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="BSCS1.1A-2402"
+                        android:textSize="13sp"
+                        android:layout_marginBottom="4dp"/>
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="• Section : BSCS1.1A-2402"
-                    android:textSize="13sp"
-                    android:layout_marginBottom="4dp"/>
-                <TextView
-                    android:textColor="@color/profile_color"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:textColor="@color/profile_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="• Program : "
+                        android:textSize="13sp"
+                        android:layout_marginBottom="4dp"/>
+                    <TextView
+                        android:id="@+id/student_program"
+                        android:textColor="@color/profile_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="BSCS"
+                        android:textSize="13sp"
+                        android:layout_marginBottom="4dp"/>
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="• Program : BSCS"
-                    android:textSize="13sp"
-                    android:layout_marginBottom="4dp"/>
-                <TextView
-                    android:textColor="@color/profile_color"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:textColor="@color/profile_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="• Year level : "
+                        android:textSize="13sp"
+                        android:layout_marginBottom="4dp"/>
+                    <TextView
+                        android:id="@+id/yearlevel_section"
+                        android:textColor="@color/profile_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1Y1"
+                        android:textSize="13sp"
+                        android:layout_marginBottom="4dp"/>
+                </LinearLayout>
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="• Year level : 1Y1"
-                    android:textSize="13sp"
-                    android:layout_marginBottom="4dp"/>
-                <TextView
-                    android:textColor="@color/profile_color"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:textColor="@color/profile_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="• Student ID : "
+                        android:textSize="13sp"
+                        android:layout_marginBottom="4dp"/>
+                    <TextView
+                        android:id="@+id/student_id"
+                        android:textColor="@color/profile_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2000111111"
+                        android:textSize="13sp"
+                        android:layout_marginBottom="4dp"/>
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="• Student ID : 2000111111"
-                    android:textSize="13sp"
-                    android:layout_marginBottom="4dp"/>
-                <TextView
-                    android:textColor="@color/profile_color"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="• Location: TER9"
-                    android:textSize="13sp" />
+                    android:orientation="horizontal">
+                    <TextView
+                        android:textColor="@color/profile_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="• Location: "
+                        android:textSize="13sp"
+                        android:layout_marginBottom="4dp"/>
+                    <TextView
+                        android:id="@+id/student_location"
+                        android:textColor="@color/profile_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="TER9"
+                        android:textSize="13sp"
+                        android:layout_marginBottom="4dp"/>
+                </LinearLayout>
+
             </LinearLayout>
 
             <TextView
@@ -155,6 +253,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/student_email"
                 android:textColor="@color/profile_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

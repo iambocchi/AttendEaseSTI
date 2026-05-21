@@ -2,8 +2,11 @@ package com.pumk.attendeasesti.Teachers;
 
 // TeacherModel.java
 public class TeacherModel {
-    private String name, email, department, campus;
+    private String name, email, department, campus, status;
     private int teacher_id;
+
+
+
     public TeacherModel(String name, String email, String department, String campus, int teacher_id)
         {
         this.name = name;
@@ -11,6 +14,7 @@ public class TeacherModel {
         this.department = department;
         this.campus = campus;
         this.teacher_id = teacher_id;
+        this.status = "Present";
     }
 
     public String getEmail() {
@@ -52,6 +56,15 @@ public class TeacherModel {
     public void setTeacher_id(int teacher_id) {
         this.teacher_id = teacher_id;
     }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
 }
 
 

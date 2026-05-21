@@ -32,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
     Button loginbtn;
     TextView forgotpassword;
 
-    private String selectedItem = "";
+    public String selectedItem = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -12,7 +12,10 @@ public class StudentModel {
     private String student_id;
     private String location;
 
-    public StudentModel(String name, String email, String course, String campus, String academic_level, String section, String program, String year_level, String student_id, String location) {
+
+    private String status;
+
+    public StudentModel(String name, String email, String course, String campus, String academic_level, String section, String program, String year_level, String student_id, String location, String status) {
         this.name = name;
         this.email = email;
         this.course = course;
@@ -23,6 +26,15 @@ public class StudentModel {
         this.year_level = year_level;
         this.student_id = student_id;
         this.location = location;
+        this.status = status;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getName() {
