@@ -75,7 +75,7 @@ public class TeacherProfileFragment extends Fragment {
                         String name   = doc.getString("name");
                         String campus = doc.getString("campus");
                         String department = doc.getString("department");
-                        Long idLong   = doc.getLong("id"); // id is a number in Firestore
+                        Long idLong   = doc.getLong("teacher_id"); // id is a number in Firestore
                         String id     = idLong != null ? String.valueOf(idLong) : "";
 
                         // ✅ Called HERE, inside the callback, after data is ready

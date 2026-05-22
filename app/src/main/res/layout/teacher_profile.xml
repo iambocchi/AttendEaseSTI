@@ -145,7 +145,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="8dp"
-                android:text="9847937992"
+                android:text="1"
                 android:textSize="13sp" />
             <TextView
                 android:layout_width="wrap_content"
