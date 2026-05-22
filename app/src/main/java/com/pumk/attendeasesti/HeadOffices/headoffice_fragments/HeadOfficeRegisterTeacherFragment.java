@@ -106,10 +106,10 @@ public class HeadOfficeRegisterTeacherFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        Toast.makeText(
-                requireContext(),
-                "IRUN",
-                Toast.LENGTH_SHORT
-        ).show();
+//        Toast.makeText(
+//                requireContext(),
+//                "IRUN",
+//                Toast.LENGTH_SHORT
+//        ).show();
     }
 }

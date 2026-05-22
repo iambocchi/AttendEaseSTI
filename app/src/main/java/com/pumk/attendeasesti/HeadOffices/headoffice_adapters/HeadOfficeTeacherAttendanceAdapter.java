@@ -10,6 +10,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import com.google.android.material.button.MaterialButton;
 import com.pumk.attendeasesti.R;
 import com.pumk.attendeasesti.Teachers.TeacherModel;
@@ -52,23 +56,60 @@ public class HeadOfficeTeacherAttendanceAdapter extends RecyclerView.Adapter<Hea
         holder.email.setText(teacher.getEmail());
         holder.department.setText(teacher.getDepartment());
 
-        // Status button color: green = present, red = absent
-        String status = teacher.getStatus();
-        if (status != null && status.equalsIgnoreCase("present")) {
+        String currentStatus = teacher.getStatus();
+        // Check if present (handles null and case sensitivity)
+        boolean isPresent = "Present".equalsIgnoreCase(currentStatus);
+
+        // --- UI Setup ---
+        if (isPresent) {
             holder.statusBtn.setText("Present");
-            holder.statusBtn.setBackgroundTintList(
-                    android.content.res.ColorStateList.valueOf(0xFF00E676)); // green
+            holder.statusBtn.setBackgroundTintList(android.content.res.ColorStateList.valueOf(0xFF00E676)); // Green
         } else {
             holder.statusBtn.setText("Absent");
-            holder.statusBtn.setBackgroundTintList(
-                    android.content.res.ColorStateList.valueOf(0xFFFF5252)); // red
+            holder.statusBtn.setBackgroundTintList(android.content.res.ColorStateList.valueOf(0xFFFF5252)); // Red
         }
-    }
 
+        // --- Click Logic ---
+        holder.statusBtn.setOnClickListener(v -> {
+            // 1. Toggle the value
+            String newStatus = isPresent ? "Absent" : "Present";
+
+            // 2. IMPORTANT: Use the email from the TEACHER object, not the current Auth user
+            String teacherEmail = teacher.getEmail();
+
+            if (teacherEmail == null || teacherEmail.isEmpty()) return;
+
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+            // 3. Update Firestore
+            db.collection("teachers")
+                    .whereEqualTo("email", teacherEmail)
+                    .get()
+                    .addOnSuccessListener(queryDocumentSnapshots -> {
+                        if (!queryDocumentSnapshots.isEmpty()) {
+                            String docId = queryDocumentSnapshots.getDocuments().get(0).getId();
+                            db.collection("teachers").document(docId)
+                                    .update("status", newStatus)
+                                    .addOnFailureListener(e -> {
+                                        // Optional: Handle error (e.g. Toast)
+                                    });
+                        }
+                    });
+        });
+    }
     @Override
     public int getItemCount() {
         return filteredList.size();
     }
+//    FirebaseAuth mAuth = FirebaseAuth.getInstance();
+//    FirebaseFirestore db = FirebaseFirestore.getInstance();
+//
+//    FirebaseUser currentUser = mAuth.getCurrentUser();
+//
+//            if (currentUser == null) return;
+//
+//    String email = currentUser.getEmail();
+
 
     // ─── SearchView Filter ─────────────────────────────────────────────────────
     @Override
@@ -116,7 +157,7 @@ public class HeadOfficeTeacherAttendanceAdapter extends RecyclerView.Adapter<Hea
             name       = itemView.findViewById(R.id.name);
             email      = itemView.findViewById(R.id.email);
             department = itemView.findViewById(R.id.sub);
-            statusBtn  = itemView.findViewById(R.id.statusBtn); // add android:id="@+id/statusBtn" to your MaterialButton
+            statusBtn  = itemView.findViewById(R.id.statusBtn);
         }
     }
 }

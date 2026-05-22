@@ -21,66 +21,49 @@ import com.pumk.attendeasesti.Teachers.TeacherModel;
 
 import java.util.ArrayList;
 import java.util.List;
+// ... existing imports ...
 
 public class HeadOfficeTeacherManagementFragment extends Fragment {
 
     private FloatingActionButton fabTeacher;
-    private RecyclerView recyclerViewTeachers;
+    private RecyclerView recyclerViewManagement;
     private HeadOfficeManagementAdapter adapter;
     private List<TeacherModel> teacherList = new ArrayList<>();
     private FirebaseFirestore db;
 
-    public HeadOfficeTeacherManagementFragment() {
-    }
+    public HeadOfficeTeacherManagementFragment() {}
 
     @Nullable
     @Override
-    public View onCreateView(
-            @NonNull LayoutInflater inflater,
-            @Nullable ViewGroup container,
-            @Nullable Bundle savedInstanceState) {
-
-        View view = inflater.inflate(
-                R.layout.headoffice_teacher_management,
-                container,
-                false
-        );
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.headoffice_teacher_management, container, false);
 
         db = FirebaseFirestore.getInstance();
 
-        recyclerViewTeachers = view.findViewById(R.id.recyclerViewTeachers);
-        recyclerViewTeachers.setLayoutManager(new LinearLayoutManager(getContext()));
+        // Initialize RecyclerView
+        recyclerViewManagement = view.findViewById(R.id.recyclerViewTeachers);
+        recyclerViewManagement.setLayoutManager(new LinearLayoutManager(getContext()));
 
         adapter = new HeadOfficeManagementAdapter(teacherList, teacher -> {
-            // handle teacher item click here if needed
+            // Handle item click if needed
         });
-        recyclerViewTeachers.setAdapter(adapter);
+        recyclerViewManagement.setAdapter(adapter);
 
-        fetchTeachers();
-
-        return view;
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        loadFragment();
-    }
-
-    private void loadFragment() {
-        fabTeacher = getActivity().findViewById(R.id.floatingRegisterTeacher);
-
+        // CORRECT WAY: Initialize FAB from the inflated view
+        fabTeacher = view.findViewById(R.id.floatingRegisterTeacher);
         fabTeacher.setOnClickListener(v -> {
             getParentFragmentManager()
                     .beginTransaction()
-                    .replace(
-                            R.id.fragment_container,
-                            new HeadOfficeRegisterTeacherFragment()
-                    )
+                    .replace(R.id.fragment_container, new HeadOfficeRegisterTeacherFragment())
                     .addToBackStack(null)
                     .commit();
         });
+
+        fetchTeachers();
+        return view;
     }
+
+    // Removed loadFragment() from onStart() as it's now handled in onCreateView
 
     private void fetchTeachers() {
         db.collection("teachers")
@@ -88,18 +71,19 @@ public class HeadOfficeTeacherManagementFragment extends Fragment {
                 .addOnSuccessListener(queryDocumentSnapshots -> {
                     teacherList.clear();
                     for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
-                        String name       = doc.getString("name");
-                        String email      = doc.getString("email");
+                        String name = doc.getString("name");
+                        String email = doc.getString("email");
                         String department = doc.getString("department");
-                        String campus     = doc.getString("campus");
-                        int teacher_id    = doc.getLong("teacher_id").intValue();
-
+                        String campus = doc.getString("campus");
+//                        Long idLong   = doc.getLong("teacher_id"); // id is a number in Firestore
+//                        String teacher_id     = idLong != null ? String.valueOf(idLong) : "";
+                        Long teacherIdLong = doc.getLong("teacher_id");
+                        int teacher_id = (teacherIdLong != null) ? teacherIdLong.intValue() : 0;
+//test
                         teacherList.add(new TeacherModel(name, email, department, campus, teacher_id));
                     }
                     adapter.updateList(teacherList);
                 })
-                .addOnFailureListener(e -> {
-                    Log.e("Firestore", "Error fetching teachers", e);
-                });
+                .addOnFailureListener(e -> Log.e("Firestore", "Error fetching teachers", e));
     }
 }

@@ -66,7 +66,7 @@ public class StudentActivity extends AppCompatActivity {
             } else if (id == R.id.my_schedule) {
                 selectedFragment = new StudentMyScheduleFragment();
             } else if (id == R.id.my_attendance) {
-                selectedFragment = new StudentMyScheduleFragment();
+                selectedFragment = new StudentMyAttendanceHistoryFragment();
             } else if (id == R.id.view_teacher_today) {
                 selectedFragment = new StudentViewTeacherTodayFragment();
             } else if (id == R.id.absent_request) {

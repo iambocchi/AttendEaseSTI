@@ -23,7 +23,7 @@ import java.util.List;
 
 public class HeadOfficeTeacherAttendanceFragment extends Fragment {
 
-    private RecyclerView recyclerView;
+    private RecyclerView recyclerViewAttendance;
     private SearchView searchView;
     private HeadOfficeTeacherAttendanceAdapter adapter;
     private FirebaseFirestore db;
@@ -43,14 +43,15 @@ public class HeadOfficeTeacherAttendanceFragment extends Fragment {
                 false
         );
 
+
         db           = FirebaseFirestore.getInstance();
-        recyclerView = view.findViewById(R.id.recyclerTeachers); // add this id to your XML
+        recyclerViewAttendance = view.findViewById(R.id.recyclerTeachersAttendance); // add this id to your XML
         searchView   = view.findViewById(R.id.searchTeachers);   // add this id to your XML
 
         // Set up RecyclerView
         adapter = new HeadOfficeTeacherAttendanceAdapter(new ArrayList<>());
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(adapter);
+        recyclerViewAttendance.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerViewAttendance.setAdapter(adapter);
 
         // Load from Firestore (real-time)
         loadTeachers();
@@ -72,10 +73,6 @@ public class HeadOfficeTeacherAttendanceFragment extends Fragment {
 
         return view;
     }
-
-
-//ETO GAGAWIN AFTER-------------------------------------------------------
-
     private void loadTeachers() {
         db.collection("teachers")
                 .addSnapshotListener((snapshots, error) -> {
@@ -97,18 +94,4 @@ public class HeadOfficeTeacherAttendanceFragment extends Fragment {
                     adapter.updateList(teacherList);
                 });
     }
-//    private void loadTeachers() {
-//        db.collection("teachers")
-//                .addSnapshotListener((snapshots, error) -> {
-//                    if (error != null || snapshots == null) return;
-//
-//                    List<TeacherModel> teacherList = new ArrayList<>();
-//                    for (QueryDocumentSnapshot doc : snapshots) {
-//                        TeacherModel teacher = doc.toObject(TeacherModel.class);
-//                        teacherList.add(teacher);
-//                    }
-//
-//                    adapter.updateList(teacherList);
-//                });
-//    }
 }
