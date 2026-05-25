@@ -41,7 +41,7 @@
             android:id="@+id/headoffice_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Lily Aldrin"
+            android:text="@string/placeholder_text"
             android:textColor="#212121"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -94,7 +94,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:text="STI College Dasmarinas"
+                android:text="@string/placeholder_text"
                 android:textColor="#555555"
                 android:textSize="15sp" />
 
@@ -111,7 +111,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:text="2000111111"
+                android:text="@string/placeholder_text"
                 android:textColor="#555555"
                 android:textSize="15sp" />
 
@@ -127,7 +127,7 @@
                 android:id="@+id/headoffice_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="lily.aldrin@school.edu"
+                android:text="@string/placeholder_text"
                 android:textColor="#555555"
                 android:textSize="15sp" />
 

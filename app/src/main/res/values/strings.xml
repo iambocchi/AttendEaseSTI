@@ -5,6 +5,9 @@
         <item>Teacher</item>
         <item>Head Office</item>
     </string-array>
+
+    <string name="placeholder_text">• • • • • • • • • •</string>
+
     <string-array name="departments">
         <item>Information Technology</item>
         <item>Business and Management</item>
@@ -27,4 +30,5 @@
     </string-array>
     <string name="nav_open">Open</string>
     <string name="nav_close">Close</string>
+
 </resources>

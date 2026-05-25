@@ -1,48 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="8dp"
-    android:layout_marginHorizontal="4dp"
-    app:cardCornerRadius="12dp"
-    app:cardElevation="2dp"
-    app:cardBackgroundColor="@color/card_color">
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="12dp">
-
-        <ImageView
-            android:id="@+id/teacher_profile_image"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_centerVertical="true"
-            android:src="@drawable/ic_avatar_placeholder" />
-
-        <TextView
-            android:id="@+id/teacher_name"
-            android:layout_width="wrap_content"
+    >
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/teacher_profile_image"
-            android:layout_marginStart="12dp"
-            android:text="Sarah Johnson"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            app:cardBackgroundColor="@color/white"
+            android:id="@+id/box">
 
-        <TextView
-            android:id="@+id/teacher_email"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/teacher_name"
-            android:layout_toEndOf="@id/teacher_profile_image"
-            android:layout_marginStart="12dp"
-            android:text="sarah.johnson@school.edu"
-            android:textColor="@color/profile_color"
-            android:textSize="14sp" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="12dp">
 
-    </RelativeLayout>
-</androidx.cardview.widget.CardView>
+                <ImageView
+                    android:id="@+id/teacher_profile_image"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_avatar_placeholder" />
+
+                <TextView
+                    android:id="@+id/teacher_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/teacher_profile_image"
+                    android:layout_marginStart="12dp"
+                    android:text="Sarah Johnson"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/teacher_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/teacher_name"
+                    android:layout_toEndOf="@id/teacher_profile_image"
+                    android:layout_marginStart="12dp"
+                    android:text="sarah.johnson@school.edu"
+                    android:textColor="@color/profile_color"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_below="@+id/box"
+                android:background="#E0E0E0" />
+</RelativeLayout>

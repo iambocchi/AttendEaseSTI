@@ -62,10 +62,6 @@
                     app:queryHint="Search teachers..."
                     app:queryBackground="@android:color/transparent"
                     android:theme="@style/SearchViewTheme" />
-
-<!--                android:layout_marginLeft="20dp"-->
-<!--                android:layout_marginRight="20dp"-->
-
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerTeachersAttendanceCalendar"
                     android:layout_width="match_parent"

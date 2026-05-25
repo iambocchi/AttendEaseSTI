@@ -13,6 +13,10 @@ import androidx.fragment.app.Fragment;
 
 import com.pumk.attendeasesti.R;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
+
 public class StudentMyAttendanceHistoryFragment extends Fragment {
 
     public StudentMyAttendanceHistoryFragment() {
@@ -33,9 +37,15 @@ public class StudentMyAttendanceHistoryFragment extends Fragment {
                 false
         );
 
-        // Initialize views here
-        // Example:
-        // TextView name = view.findViewById(R.id.name);
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd,yyyy");
+        String formattedDate = dateFormat.format(calendar.getTime());
+
+        SimpleDateFormat dayFormat = new SimpleDateFormat("EEEE", Locale.getDefault());
+        String dayOfWeek = dayFormat.format(calendar.getTime());
+
+
+
 
         return view;
     }

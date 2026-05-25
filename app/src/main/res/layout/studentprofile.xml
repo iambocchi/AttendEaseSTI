@@ -41,7 +41,7 @@
             android:id="@+id/student_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Andrea Cruz"
+            android:text="@string/placeholder_text"
             android:textColor="#333333"
             android:textSize="22sp"
             android:textStyle="bold" />
@@ -109,7 +109,7 @@
                         android:textColor="@color/profile_color"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="STI College Dasmarinas"
+                        android:text="@string/placeholder_text"
                         android:textSize="13sp"
                         android:layout_marginBottom="4dp"/>
                 </LinearLayout>
@@ -130,7 +130,7 @@
                         android:textColor="@color/profile_color"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Tertiary"
+                        android:text="@string/placeholder_text"
                         android:textSize="13sp"
                         android:layout_marginBottom="4dp"/>
                 </LinearLayout>
@@ -151,7 +151,7 @@
                         android:textColor="@color/profile_color"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="BSCS1.1A-2402"
+                        android:text="@string/placeholder_text"
                         android:textSize="13sp"
                         android:layout_marginBottom="4dp"/>
                 </LinearLayout>
@@ -172,7 +172,7 @@
                         android:textColor="@color/profile_color"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="BSCS"
+                        android:text="@string/placeholder_text"
                         android:textSize="13sp"
                         android:layout_marginBottom="4dp"/>
                 </LinearLayout>
@@ -193,7 +193,7 @@
                         android:textColor="@color/profile_color"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="1Y1"
+                        android:text="@string/placeholder_text"
                         android:textSize="13sp"
                         android:layout_marginBottom="4dp"/>
                 </LinearLayout>
@@ -213,7 +213,7 @@
                         android:textColor="@color/profile_color"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="2000111111"
+                        android:text="@string/placeholder_text"
                         android:textSize="13sp"
                         android:layout_marginBottom="4dp"/>
                 </LinearLayout>
@@ -234,7 +234,7 @@
                         android:textColor="@color/profile_color"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="TER9"
+                        android:text="@string/placeholder_text"
                         android:textSize="13sp"
                         android:layout_marginBottom="4dp"/>
                 </LinearLayout>
