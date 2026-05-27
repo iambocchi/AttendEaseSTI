@@ -70,7 +70,7 @@ public class StudentActivity extends AppCompatActivity {
             } else if (id == R.id.view_teacher_today) {
                 selectedFragment = new StudentViewTeacherTodayFragment();
             } else if (id == R.id.absent_request) {
-                selectedFragment = new StudentAbsentRequestFragment();
+                selectedFragment = new StudentAbsenceRequestFragment();
             } else if (id == R.id.logout) {
                 startActivity(new Intent(this, LoginActivity.class));
                 finish();

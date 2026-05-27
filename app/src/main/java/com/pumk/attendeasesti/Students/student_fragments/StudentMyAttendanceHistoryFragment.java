@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -44,6 +45,7 @@ public class StudentMyAttendanceHistoryFragment extends Fragment {
         SimpleDateFormat dayFormat = new SimpleDateFormat("EEEE", Locale.getDefault());
         String dayOfWeek = dayFormat.format(calendar.getTime());
 
+        Toast.makeText(getContext(), formattedDate +" "+ dayOfWeek, Toast.LENGTH_SHORT).show();
 
 
 

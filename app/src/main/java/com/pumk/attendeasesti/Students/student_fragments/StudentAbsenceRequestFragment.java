@@ -9,13 +9,12 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
 import com.pumk.attendeasesti.R;
 
-public class StudentAbsentRequestFragment extends Fragment {
+public class StudentAbsenceRequestFragment extends Fragment {
 
-    public StudentAbsentRequestFragment() {
+    public StudentAbsenceRequestFragment() {
         // Required empty constructor
     }
 
