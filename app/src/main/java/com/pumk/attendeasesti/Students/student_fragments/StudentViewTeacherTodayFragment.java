@@ -85,8 +85,7 @@ public class StudentViewTeacherTodayFragment extends Fragment {
                         String campus     = doc.getString("campus");
                         String status     = doc.getString("status");
 
-                        TeacherModel teacher = new TeacherModel(name, email, department, campus, 0);
-                        teacher.setStatus(status);
+                        TeacherModel teacher = new TeacherModel(name, email, department, campus,status, 0);
                         teacherList.add(teacher);
                     }
 

@@ -14,12 +14,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.pumk.attendeasesti.R;
 import com.pumk.attendeasesti.HeadOffices.headoffice_adapters.HeadOfficeTeacherAttendanceAdapter;
+import com.pumk.attendeasesti.R;
 import com.pumk.attendeasesti.Teachers.TeacherModel;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class HeadOfficeTeacherAttendanceFragment extends Fragment {
 
@@ -27,6 +30,9 @@ public class HeadOfficeTeacherAttendanceFragment extends Fragment {
     private SearchView searchView;
     private HeadOfficeTeacherAttendanceAdapter adapter;
     private FirebaseFirestore db;
+
+    // Today's date in the same format as Firestore document IDs: "May 27, 2026"
+    private final String todayDate = new SimpleDateFormat("MMM d, yyyy", Locale.getDefault()).format(new Date());
 
     public HeadOfficeTeacherAttendanceFragment() {}
 
@@ -43,27 +49,23 @@ public class HeadOfficeTeacherAttendanceFragment extends Fragment {
                 false
         );
 
+        db                     = FirebaseFirestore.getInstance();
+        recyclerViewAttendance = view.findViewById(R.id.recyclerTeachersAttendance);
+        searchView             = view.findViewById(R.id.searchTeachers);
 
-        db           = FirebaseFirestore.getInstance();
-        recyclerViewAttendance = view.findViewById(R.id.recyclerTeachersAttendance); // add this id to your XML
-        searchView   = view.findViewById(R.id.searchTeachers);   // add this id to your XML
-
-        // Set up RecyclerView
         adapter = new HeadOfficeTeacherAttendanceAdapter(new ArrayList<>());
         recyclerViewAttendance.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerViewAttendance.setAdapter(adapter);
 
-        // Load from Firestore (real-time)
-        loadTeachers();
+        // Load today's attendance from the Attendance subcollection
+        loadTeachersWithTodayAttendance();
 
-        // Wire up SearchView
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 adapter.getFilter().filter(query);
                 return false;
             }
-
             @Override
             public boolean onQueryTextChange(String newText) {
                 adapter.getFilter().filter(newText);
@@ -73,25 +75,63 @@ public class HeadOfficeTeacherAttendanceFragment extends Fragment {
 
         return view;
     }
-    private void loadTeachers() {
+
+    /**
+     * Fetches all teachers, then reads each teacher's
+     * Attendance/{todayDate} doc for today's status.
+     * Same pattern as HeadOfficeCalendarFragment but fixed to today only.
+     */
+    private void loadTeachersWithTodayAttendance() {
         db.collection("teachers")
-                .addSnapshotListener((snapshots, error) -> {
-                    if (error != null || snapshots == null) return;
+                .get()
+                .addOnSuccessListener(teacherSnapshots -> {
+                    List<TeacherModel> result = new ArrayList<>();
+                    int total = teacherSnapshots.size();
 
-                    List<TeacherModel> teacherList = new ArrayList<>();
-                    for (QueryDocumentSnapshot doc : snapshots) {
-                        String name       = doc.getString("name");
-                        String email      = doc.getString("email");
-                        String department = doc.getString("department");
-                        String campus     = doc.getString("campus");
-                        String status     = doc.getString("status");
-
-                        TeacherModel teacher = new TeacherModel(name, email, department, campus, 0);
-                        teacher.setStatus(status);
-                        teacherList.add(teacher);
+                    if (total == 0) {
+                        adapter.updateList(result);
+                        return;
                     }
 
-                    adapter.updateList(teacherList);
+                    int[] completed = {0};
+
+                    for (QueryDocumentSnapshot teacherDoc : teacherSnapshots) {
+                        String docId      = teacherDoc.getId();
+                        String name       = teacherDoc.getString("name");
+                        String email      = teacherDoc.getString("email");
+                        String department = teacherDoc.getString("department");
+                        String campus     = teacherDoc.getString("campus");
+                        Long   idLong     = teacherDoc.getLong("teacher_id");
+                        int    teacherId  = idLong != null ? idLong.intValue() : 0;
+
+                        // Read today's attendance from subcollection
+                        db.collection("teachers")
+                                .document(docId)
+                                .collection("Attendance")
+                                .document(todayDate) // e.g. "May 27, 2026"
+                                .get()
+                                .addOnSuccessListener(attendanceDoc -> {
+                                    String status = "No Record";
+                                    if (attendanceDoc.exists()) {
+                                        String s = attendanceDoc.getString("status");
+                                        if (s != null) status = s;
+                                    }
+
+                                    result.add(new TeacherModel(
+                                            name, email, department, campus, status, teacherId
+                                    ));
+
+                                    completed[0]++;
+                                    if (completed[0] == total) adapter.updateList(result);
+                                })
+                                .addOnFailureListener(e -> {
+                                    result.add(new TeacherModel(
+                                            name, email, department, campus, "No Record", teacherId
+                                    ));
+                                    completed[0]++;
+                                    if (completed[0] == total) adapter.updateList(result);
+                                });
+                    }
                 });
     }
 }

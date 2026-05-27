@@ -80,7 +80,7 @@ public class HeadOfficeTeacherManagementFragment extends Fragment {
                         Long teacherIdLong = doc.getLong("teacher_id");
                         int teacher_id = (teacherIdLong != null) ? teacherIdLong.intValue() : 0;
 //test
-                        teacherList.add(new TeacherModel(name, email, department, campus, teacher_id));
+                        teacherList.add(new TeacherModel(name, email, department, campus, "No Record", teacher_id));
                     }
                     adapter.updateList(teacherList);
                 })

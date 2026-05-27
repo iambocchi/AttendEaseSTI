@@ -7,14 +7,14 @@ public class TeacherModel {
 
 
 
-    public TeacherModel(String name, String email, String department, String campus, int teacher_id)
+    public TeacherModel(String name, String email, String department, String campus, String status, int teacher_id)
         {
+        this.status = status;
         this.name = name;
         this.email = email;
         this.department = department;
         this.campus = campus;
-        this.teacher_id = teacher_id;
-        this.status = "Present";
+        this.teacher_id = teacher_id;;
     }
 
     public String getEmail() {

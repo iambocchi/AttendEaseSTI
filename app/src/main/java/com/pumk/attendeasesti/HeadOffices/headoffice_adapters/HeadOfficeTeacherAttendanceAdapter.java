@@ -10,10 +10,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.FirebaseFirestore;
-
 import com.google.android.material.button.MaterialButton;
 import com.pumk.attendeasesti.R;
 import com.pumk.attendeasesti.Teachers.TeacherModel;
@@ -24,27 +20,25 @@ import java.util.List;
 public class HeadOfficeTeacherAttendanceAdapter extends RecyclerView.Adapter<HeadOfficeTeacherAttendanceAdapter.TeacherViewHolder>
         implements Filterable {
 
-    private List<TeacherModel> fullList;      // original unfiltered list
-    private List<TeacherModel> filteredList;  // what the RecyclerView actually shows
+    private List<TeacherModel> fullList;
+    private List<TeacherModel> filteredList;
 
     public HeadOfficeTeacherAttendanceAdapter(List<TeacherModel> teacherList) {
         this.fullList     = new ArrayList<>(teacherList);
         this.filteredList = new ArrayList<>(teacherList);
     }
 
-    // ─── Update data when Firestore snapshot arrives ───────────────────────────
     public void updateList(List<TeacherModel> newList) {
         fullList     = new ArrayList<>(newList);
         filteredList = new ArrayList<>(newList);
         notifyDataSetChanged();
     }
 
-    // ─── ViewHolder ────────────────────────────────────────────────────────────
     @NonNull
     @Override
     public TeacherViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.headoffice_teacher_attendance_card, parent, false); // your card XML file name
+                .inflate(R.layout.headoffice_teacher_attendance_card, parent, false);
         return new TeacherViewHolder(view);
     }
 
@@ -52,87 +46,51 @@ public class HeadOfficeTeacherAttendanceAdapter extends RecyclerView.Adapter<Hea
     public void onBindViewHolder(@NonNull TeacherViewHolder holder, int position) {
         TeacherModel teacher = filteredList.get(position);
 
-        holder.name.setText(teacher.getName());
-        holder.email.setText(teacher.getEmail());
-        holder.department.setText(teacher.getDepartment());
+        holder.name.setText(teacher.getName()         != null ? teacher.getName()       : "N/A");
+        holder.email.setText(teacher.getEmail()       != null ? teacher.getEmail()      : "N/A");
+        holder.department.setText(teacher.getDepartment() != null ? teacher.getDepartment() : "N/A");
 
-        String currentStatus = teacher.getStatus();
-        // Check if present (handles null and case sensitivity)
-        boolean isPresent = "Present".equalsIgnoreCase(currentStatus);
+        boolean isPresent = "Present".equalsIgnoreCase(teacher.getStatus());
 
-        // --- UI Setup ---
         if (isPresent) {
             holder.statusBtn.setText("Present");
-            holder.statusBtn.setBackgroundTintList(android.content.res.ColorStateList.valueOf(0xFF00E676)); // Green
+            holder.statusBtn.setBackgroundTintList(
+                    android.content.res.ColorStateList.valueOf(0xFF00E676)); // green
         } else {
             holder.statusBtn.setText("Absent");
-            holder.statusBtn.setBackgroundTintList(android.content.res.ColorStateList.valueOf(0xFFFF5252)); // Red
+            holder.statusBtn.setBackgroundTintList(
+                    android.content.res.ColorStateList.valueOf(0xFFFF5252)); // red
         }
 
-        // --- Click Logic ---
-        holder.statusBtn.setOnClickListener(v -> {
-            // 1. Toggle the value
-            String newStatus = isPresent ? "Absent" : "Present";
-
-            // 2. IMPORTANT: Use the email from the TEACHER object, not the current Auth user
-            String teacherEmail = teacher.getEmail();
-
-            if (teacherEmail == null || teacherEmail.isEmpty()) return;
-
-            FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-            // 3. Update Firestore
-            db.collection("teachers")
-                    .whereEqualTo("email", teacherEmail)
-                    .get()
-                    .addOnSuccessListener(queryDocumentSnapshots -> {
-                        if (!queryDocumentSnapshots.isEmpty()) {
-                            String docId = queryDocumentSnapshots.getDocuments().get(0).getId();
-                            db.collection("teachers").document(docId)
-                                    .update("status", newStatus)
-                                    .addOnFailureListener(e -> {
-                                        // Optional: Handle error (e.g. Toast)
-                                    });
-                        }
-                    });
-        });
+        // Read-only — no click listener, no interaction
+        holder.statusBtn.setClickable(false);
+        holder.statusBtn.setFocusable(false);
     }
+
     @Override
     public int getItemCount() {
         return filteredList.size();
     }
-//    FirebaseAuth mAuth = FirebaseAuth.getInstance();
-//    FirebaseFirestore db = FirebaseFirestore.getInstance();
-//
-//    FirebaseUser currentUser = mAuth.getCurrentUser();
-//
-//            if (currentUser == null) return;
-//
-//    String email = currentUser.getEmail();
 
-
-    // ─── SearchView Filter ─────────────────────────────────────────────────────
     @Override
     public Filter getFilter() {
         return new Filter() {
             @Override
             protected FilterResults performFiltering(CharSequence constraint) {
                 List<TeacherModel> results = new ArrayList<>();
-
                 if (constraint == null || constraint.length() == 0) {
                     results.addAll(fullList);
                 } else {
                     String query = constraint.toString().toLowerCase().trim();
                     for (TeacherModel t : fullList) {
-                        if (t.getName().toLowerCase().contains(query)
-                                || t.getEmail().toLowerCase().contains(query)
-                                || t.getDepartment().toLowerCase().contains(query)
-                                || t.getCampus().toLowerCase().contains(query)) {
+                        if (t.getName()       != null && t.getName().toLowerCase().contains(query)
+                                || t.getEmail()      != null && t.getEmail().toLowerCase().contains(query)
+                                || t.getDepartment() != null && t.getDepartment().toLowerCase().contains(query)
+                                || t.getCampus()     != null && t.getCampus().toLowerCase().contains(query)) {
                             results.add(t);
                         }
                     }
                 }
-
                 FilterResults filterResults = new FilterResults();
                 filterResults.values = results;
                 return filterResults;
@@ -147,7 +105,6 @@ public class HeadOfficeTeacherAttendanceAdapter extends RecyclerView.Adapter<Hea
         };
     }
 
-    // ─── ViewHolder class ──────────────────────────────────────────────────────
     public static class TeacherViewHolder extends RecyclerView.ViewHolder {
         TextView name, email, department;
         MaterialButton statusBtn;

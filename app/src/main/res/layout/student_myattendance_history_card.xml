@@ -11,86 +11,167 @@
     app:strokeColor="#E9D7C3"
     app:strokeWidth="1dp">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:padding="12dp">
 
-        <!-- Left: date info -->
-        <LinearLayout
-            android:id="@+id/layoutDateInfo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_alignParentStart="true"
-            android:orientation="vertical">
+        <!-- Main row: date | status badge | arrow -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            <TextView
+            <!-- Left: date info -->
+            <LinearLayout
+                android:id="@+id/layoutDateInfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Today"
-                android:textColor="#000000"
-                android:textStyle="bold"
-                android:textSize="14sp" />
+                android:layout_centerVertical="true"
+                android:layout_alignParentStart="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Attendance"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:textSize="14sp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/month"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="May"
+                        android:textColor="#8D6E63"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" "
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/dayAndYear"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="27, 2026"
+                        android:textColor="#8D6E63"
+                        android:textSize="11sp" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Right: dropdown arrow (tap to expand) -->
+            <ImageView
+                android:id="@+id/ivDropdownArrow"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@android:drawable/arrow_down_float"
+                android:padding="2dp" />
+
+            <!-- Center-right: status badge -->
+            <LinearLayout
+                android:id="@+id/layoutStatusBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/ivDropdownArrow"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/bg_present"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="5dp"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/ivStatusBadge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="✔ Present"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <!-- Expanded section: shown when arrow is tapped -->
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:id="@+id/expandedLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:id="@+id/month"
-                android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:layout_marginTop="10dp"
+            android:paddingTop="10dp">
+
+            <!-- Divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="#E9D7C3"
+                android:layout_marginBottom="8dp" />
+
+            <!-- Subject row -->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Feb"
-                android:textColor="#8D6E63"
-                android:textSize="11sp" />
-            <TextView
-                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="4dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Subject: "
+                    android:textColor="#8D6E63"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvSubjectExpanded"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Computer Programming"
+                    android:textColor="#333333"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+            <!-- Status row -->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text=" "
-                android:textSize="11sp" />
-            <TextView
-                android:id="@+id/dayAndYear"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="17, 2026"
-                android:textColor="#8D6E63"
-                android:textSize="11sp" />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Status: "
+                    android:textColor="#8D6E63"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvStatusExpanded"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Present"
+                    android:textColor="#333333"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
         </LinearLayout>
 
-
-        </LinearLayout>
-
-        <!-- Right: arrow -->
-        <ImageView
-            android:id="@+id/ivDropdownArrow"
-            android:layout_width="18dp"
-            android:layout_height="18dp"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:src="@android:drawable/arrow_down_float" />
-
-        <!-- Center-right: Present badge -->
-        <LinearLayout
-            android:id="@+id/layoutStatusBadge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toStartOf="@id/ivDropdownArrow"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="10dp"
-            android:background="@drawable/bg_present"
-            android:paddingHorizontal="12dp"
-            android:paddingVertical="5dp"
-            android:gravity="center">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="✔ Present"
-                android:textColor="#FFFFFF"
-                android:textStyle="bold"
-                android:textSize="12sp" />
-
-        </LinearLayout>
-
-    </RelativeLayout>
+    </LinearLayout>
 </androidx.cardview.widget.CardView>
