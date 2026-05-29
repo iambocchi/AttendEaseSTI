@@ -32,7 +32,6 @@
                 android:orientation="vertical"
                 android:padding="20dp">
 
-                <!-- Title -->
                 <TextView
                     android:textColor="@color/black"
                     android:layout_width="wrap_content"
@@ -42,8 +41,9 @@
                     android:textStyle="bold"
                     android:layout_marginBottom="20dp"/>
 
-                <!-- Name -->
+                <!-- Name — ID added to TextInputLayout -->
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/nameContainer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/Widget.App.TextInputLayout.RoundedOutline"
@@ -60,8 +60,9 @@
                         android:textColor="@color/black"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <!-- Email -->
+                <!-- Email — ID added to TextInputLayout -->
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/emailContainer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/Widget.App.TextInputLayout.RoundedOutline"
@@ -78,8 +79,9 @@
                         android:textColor="@color/black"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <!-- Password -->
+                <!-- Password — ID added to TextInputLayout -->
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/passwordContainer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/Widget.App.TextInputLayout.RoundedOutline"
@@ -163,7 +165,6 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- Save Button -->
         <Button
             android:textColor="@color/white"
             android:id="@+id/regisSave"
@@ -177,7 +178,6 @@
             android:textSize="20sp"
             android:backgroundTint="#B87830"/>
 
-        <!-- Cancel Button -->
         <Button
             android:textColor="@color/white"
             android:id="@+id/regisCancel"

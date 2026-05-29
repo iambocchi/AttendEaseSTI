@@ -29,6 +29,7 @@ public class HeadOfficeRegisterTeacherFragment extends Fragment {
     private FirebaseFirestore db;
 
     private TextInputEditText nameInput, emailInput, passwordInput;
+    // Reference layouts directly by ID instead of getParent().getParent()
     private TextInputLayout nameContainer, emailContainer, passwordContainer;
     private AutoCompleteTextView departmentDropdown, campusDropdown;
     private Button addSchedBtn, saveBtn, cancelBtn;
@@ -51,60 +52,37 @@ public class HeadOfficeRegisterTeacherFragment extends Fragment {
                 false
         );
 
-        // Initialize Firebase
         mAuth = FirebaseAuth.getInstance();
         db    = FirebaseFirestore.getInstance();
 
-        // Initialize Views
-        nameInput          = view.findViewById(R.id.name_input);
-        emailInput         = view.findViewById(R.id.email_input);
-        passwordInput      = view.findViewById(R.id.password_input);
+        // Input fields
+        nameInput     = view.findViewById(R.id.name_input);
+        emailInput    = view.findViewById(R.id.email_input);
+        passwordInput = view.findViewById(R.id.password_input);
+
+        // TextInputLayouts — reference directly by ID (add IDs to your XML below)
+        nameContainer     = view.findViewById(R.id.nameContainer);
+        emailContainer    = view.findViewById(R.id.emailContainer);
+        passwordContainer = view.findViewById(R.id.passwordContainer);
+
+        // Dropdowns
         departmentDropdown = view.findViewById(R.id.departmentDropdown);
         campusDropdown     = view.findViewById(R.id.campusDropdown);
-        addSchedBtn        = view.findViewById(R.id.regisAddSched);
-        saveBtn            = view.findViewById(R.id.regisSave);
-        cancelBtn          = view.findViewById(R.id.regisCancel);
 
-        // Resolve TextInputLayouts from their child EditTexts
-        nameContainer     = (TextInputLayout) nameInput.getParent().getParent();
-        emailContainer    = (TextInputLayout) emailInput.getParent().getParent();
-        passwordContainer = (TextInputLayout) passwordInput.getParent().getParent();
+        // Buttons
+        addSchedBtn = view.findViewById(R.id.regisAddSched);
+        saveBtn     = view.findViewById(R.id.regisSave);
+        cancelBtn   = view.findViewById(R.id.regisCancel);
 
-        // Department dropdown
-        ArrayAdapter<CharSequence> deptAdapter = ArrayAdapter.createFromResource(
-                requireContext(),
-                R.array.departments,
-                R.layout.spinner_selected_item
-        );
-        deptAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
-        departmentDropdown.setAdapter(deptAdapter);
-        departmentDropdown.setText("Choose your department", false);
-        departmentDropdown.setOnItemClickListener((parent, v, position, id) ->
-                selectedDepartment = parent.getItemAtPosition(position).toString()
-        );
+        setupDepartmentDropdown();
+        setupCampusDropdown();
 
-        // Campus dropdown
-        ArrayAdapter<CharSequence> campusAdapter = ArrayAdapter.createFromResource(
-                requireContext(),
-                R.array.campuses,
-                R.layout.spinner_selected_item
-        );
-        campusAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
-        campusDropdown.setAdapter(campusAdapter);
-        campusDropdown.setText("Choose your campus", false);
-        campusDropdown.setOnItemClickListener((parent, v, position, id) ->
-                selectedCampus = parent.getItemAtPosition(position).toString()
-        );
-
-        // Add Schedule button
         addSchedBtn.setOnClickListener(v ->
                 Toast.makeText(requireContext(), "Schedule picker coming soon", Toast.LENGTH_SHORT).show()
         );
 
-        // Save button
         saveBtn.setOnClickListener(v -> registerTeacher());
 
-        // Cancel button — go back to previous fragment
         cancelBtn.setOnClickListener(v ->
                 requireActivity().getSupportFragmentManager().popBackStack()
         );
@@ -112,67 +90,99 @@ public class HeadOfficeRegisterTeacherFragment extends Fragment {
         return view;
     }
 
+    private void setupDepartmentDropdown() {
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+                requireContext(),
+                R.array.departments,
+                R.layout.spinner_selected_item
+        );
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
+        departmentDropdown.setAdapter(adapter);
+        departmentDropdown.setText("Choose your department", false);
+
+        // setOnItemClickListener fires when user picks from the dropdown list
+        departmentDropdown.setOnItemClickListener((parent, v, position, id) ->
+                selectedDepartment = parent.getItemAtPosition(position).toString()
+        );
+
+        // setOnDismissListener as a fallback in case OnItemClickListener misses
+        departmentDropdown.setOnDismissListener(() -> {
+            String typed = departmentDropdown.getText().toString().trim();
+            if (!typed.isEmpty() && !typed.equals("Choose your department")) {
+                selectedDepartment = typed;
+            }
+        });
+    }
+
+    private void setupCampusDropdown() {
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+                requireContext(),
+                R.array.campuses,
+                R.layout.spinner_selected_item
+        );
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
+        campusDropdown.setAdapter(adapter);
+        campusDropdown.setText("Choose your campus", false);
+
+        campusDropdown.setOnItemClickListener((parent, v, position, id) ->
+                selectedCampus = parent.getItemAtPosition(position).toString()
+        );
+
+        campusDropdown.setOnDismissListener(() -> {
+            String typed = campusDropdown.getText().toString().trim();
+            if (!typed.isEmpty() && !typed.equals("Choose your campus")) {
+                selectedCampus = typed;
+            }
+        });
+    }
+
     private void registerTeacher() {
         String name     = nameInput.getText().toString().trim();
         String email    = emailInput.getText().toString().trim();
         String password = passwordInput.getText().toString().trim();
 
-        // Clear previous errors
         nameContainer.setError(null);
         emailContainer.setError(null);
         passwordContainer.setError(null);
 
-        // Validation
         if (name.isEmpty()) {
             nameContainer.setError("Name is required");
             return;
         }
-
         if (email.isEmpty()) {
             emailContainer.setError("Email is required");
             return;
         }
-
         if (password.isEmpty()) {
             passwordContainer.setError("Password is required");
             return;
         }
-
         if (password.length() < 6) {
             passwordContainer.setError("Password must be at least 6 characters");
             return;
         }
-
         if (selectedDepartment.isEmpty() || selectedDepartment.equals("Choose your department")) {
             Toast.makeText(requireContext(), "Please select a department", Toast.LENGTH_SHORT).show();
             return;
         }
-
         if (selectedCampus.isEmpty() || selectedCampus.equals("Choose your campus")) {
             Toast.makeText(requireContext(), "Please select a campus", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Step 1: Create Firebase Auth account
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(requireActivity(), task -> {
                     if (task.isSuccessful()) {
                         String uid = mAuth.getCurrentUser().getUid();
                         generateTeacherIdAndSave(uid, name, email);
                     } else {
-                        Toast.makeText(
-                                requireContext(),
+                        Toast.makeText(requireContext(),
                                 "Registration Failed: " + task.getException().getMessage(),
-                                Toast.LENGTH_LONG
-                        ).show();
+                                Toast.LENGTH_LONG).show();
                     }
                 });
     }
 
-    /**
-     * Transaction on meta/teacherCounter to safely auto-increment teacher_id.
-     * First teacher = 100, then 101, 102, etc.
-     */
     private void generateTeacherIdAndSave(String uid, String name, String email) {
         DocumentReference counterRef = db.collection("meta").document("teacherCounter");
 
@@ -191,13 +201,10 @@ public class HeadOfficeRegisterTeacherFragment extends Fragment {
 
         }).addOnSuccessListener(newId ->
                 saveTeacherToFirestore(uid, name, email, newId.intValue())
-
         ).addOnFailureListener(e ->
-                Toast.makeText(
-                        requireContext(),
+                Toast.makeText(requireContext(),
                         "Could not generate teacher ID: " + e.getMessage(),
-                        Toast.LENGTH_LONG
-                ).show()
+                        Toast.LENGTH_LONG).show()
         );
     }
 
@@ -210,29 +217,22 @@ public class HeadOfficeRegisterTeacherFragment extends Fragment {
         teacherData.put("campus",     selectedCampus);
         teacherData.put("teacher_id", teacherId);
         teacherData.put("role",       "Teacher");
-        teacherData.put("status",     "Present"); // default status
+        teacherData.put("status",     "Present");
 
         db.collection("teachers")
                 .document(uid)
                 .set(teacherData)
                 .addOnSuccessListener(aVoid -> {
-                    Toast.makeText(
-                            requireContext(),
-                            "Teacher registered successfully!",
-                            Toast.LENGTH_SHORT
-                    ).show();
+                    Toast.makeText(requireContext(),
+                            "Teacher registered successfully!", Toast.LENGTH_SHORT).show();
                     clearForm();
                 })
                 .addOnFailureListener(e ->
-                        Toast.makeText(
-                                requireContext(),
-                                "Firestore Error: " + e.getMessage(),
-                                Toast.LENGTH_LONG
-                        ).show()
+                        Toast.makeText(requireContext(),
+                                "Firestore Error: " + e.getMessage(), Toast.LENGTH_LONG).show()
                 );
     }
 
-    // Reset form fields after successful registration
     private void clearForm() {
         nameInput.setText("");
         emailInput.setText("");

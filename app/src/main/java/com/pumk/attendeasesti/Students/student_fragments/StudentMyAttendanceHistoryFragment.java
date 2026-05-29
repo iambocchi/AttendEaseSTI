@@ -93,7 +93,7 @@ public class StudentMyAttendanceHistoryFragment extends Fragment {
                     if (studentSnapshots.isEmpty()) return;
 
                     String studentDocId = studentSnapshots.getDocuments().get(0).getId();
-                 
+
                     // Step 2: Fetch all Attendance subcollection documents
                     db.collection("students")
                             .document(studentDocId)
