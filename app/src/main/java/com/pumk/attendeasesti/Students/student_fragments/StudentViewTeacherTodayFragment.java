@@ -18,8 +18,11 @@ import com.pumk.attendeasesti.R;
 import com.pumk.attendeasesti.Students.student_adapters.StudentViewTeacherTodayAdapter;
 import com.pumk.attendeasesti.Teachers.TeacherModel;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class StudentViewTeacherTodayFragment extends Fragment {
 
@@ -27,6 +30,9 @@ public class StudentViewTeacherTodayFragment extends Fragment {
     private SearchView searchView;
     private StudentViewTeacherTodayAdapter adapter;
     private FirebaseFirestore db;
+
+    // Today's date matching Firestore Attendance document ID format
+    private final String todayDate = new SimpleDateFormat("MMM d, yyyy", Locale.getDefault()).format(new Date());
 
     public StudentViewTeacherTodayFragment() {}
 
@@ -44,8 +50,8 @@ public class StudentViewTeacherTodayFragment extends Fragment {
         );
 
         db           = FirebaseFirestore.getInstance();
-        recyclerView = view.findViewById(R.id.recyclerViewTeachers);  // add to your XML
-        searchView   = view.findViewById(R.id.searchViewTeacher);    // add to your XML
+        recyclerView = view.findViewById(R.id.recyclerViewTeachers);
+        searchView   = view.findViewById(R.id.searchViewTeacher);
 
         adapter = new StudentViewTeacherTodayAdapter(new ArrayList<>());
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -59,7 +65,6 @@ public class StudentViewTeacherTodayFragment extends Fragment {
                 adapter.getFilter().filter(query);
                 return false;
             }
-
             @Override
             public boolean onQueryTextChange(String newText) {
                 adapter.getFilter().filter(newText);
@@ -70,26 +75,56 @@ public class StudentViewTeacherTodayFragment extends Fragment {
         return view;
     }
 
+    /**
+     * Fetches all teachers, checks each one's Attendance/{todayDate} doc,
+     * and only shows teachers whose status is "Present" for today.
+     */
     private void loadPresentTeachers() {
-        // Only fetch teachers whose status is "Present"
         db.collection("teachers")
-                .whereEqualTo("status", "Present")
-                .addSnapshotListener((snapshots, error) -> {
-                    if (error != null || snapshots == null) return;
+                .get()
+                .addOnSuccessListener(teacherSnapshots -> {
+                    int total = teacherSnapshots.size();
+                    if (total == 0) return;
 
-                    List<TeacherModel> teacherList = new ArrayList<>();
-                    for (QueryDocumentSnapshot doc : snapshots) {
-                        String name       = doc.getString("name");
-                        String email      = doc.getString("email");
-                        String department = doc.getString("department");
-                        String campus     = doc.getString("campus");
-                        String status     = doc.getString("status");
+                    int[] completed = {0};
+                    List<TeacherModel> presentTeachers = new ArrayList<>();
 
-                        TeacherModel teacher = new TeacherModel(name, email, department, campus,status, 0);
-                        teacherList.add(teacher);
+                    for (QueryDocumentSnapshot teacherDoc : teacherSnapshots) {
+                        String docId      = teacherDoc.getId();
+                        String name       = teacherDoc.getString("name");
+                        String email      = teacherDoc.getString("email");
+                        String department = teacherDoc.getString("department");
+                        String campus     = teacherDoc.getString("campus");
+
+                        // Check today's attendance doc for this teacher
+                        db.collection("teachers")
+                                .document(docId)
+                                .collection("Attendance")
+                                .document(todayDate)
+                                .get()
+                                .addOnSuccessListener(attendanceDoc -> {
+                                    if (attendanceDoc.exists()) {
+                                        String status = attendanceDoc.getString("status");
+                                        // Only add if Present today
+                                        if ("Present".equalsIgnoreCase(status)) {
+                                            presentTeachers.add(new TeacherModel(
+                                                    name, email, department, campus, status, 0
+                                            ));
+                                        }
+                                    }
+
+                                    completed[0]++;
+                                    if (completed[0] == total) {
+                                        adapter.updateList(presentTeachers);
+                                    }
+                                })
+                                .addOnFailureListener(e -> {
+                                    completed[0]++;
+                                    if (completed[0] == total) {
+                                        adapter.updateList(presentTeachers);
+                                    }
+                                });
                     }
-
-                    adapter.updateList(teacherList);
                 });
     }
 }

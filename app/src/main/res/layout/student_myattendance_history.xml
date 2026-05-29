@@ -55,7 +55,7 @@
                         android:textSize="16sp"
                         android:inputType="none"
                         android:background="@drawable/round_month_spinner"
-                        android:popupBackground="#5D4037"/>
+                        android:popupBackground="@drawable/round_month_spinner_popup"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <View

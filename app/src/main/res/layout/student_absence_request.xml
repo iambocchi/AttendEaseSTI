@@ -37,6 +37,179 @@
                     android:textSize="22sp"
                     android:textStyle="bold" />
 
+                <androidx.cardview.widget.CardView android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:layout_marginBottom="16dp"
+                    app:cardBackgroundColor="#FFF5E9"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="0dp"
+                    xmlns:android="http://schemas.android.com/apk/res/android">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="12dp">
+
+                        <ImageView
+                            android:layout_marginTop="10dp"
+                            android:id="@+id/imageTeacherProfile"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/ic_avatar_placeholder" />
+
+                        <TextView
+                            android:id="@+id/submitAbsenceRequest"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentTop="true"
+                            android:background="@drawable/bg_black_capsule"
+                            android:paddingHorizontal="14dp"
+                            android:paddingVertical="3dp"
+                            android:layout_marginTop="10dp"
+                            android:text="Enter"
+                            android:clickable="true"
+                            android:textColor="#FFFFFF"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:id="@+id/teacherName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_toStartOf="@id/submitAbsenceRequest"
+                            android:layout_toEndOf="@id/imageTeacherProfile"
+                            android:text="Prof. Sarah Johnson"
+                            android:textColor="#000000"
+                            android:layout_marginTop="10dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/subject"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/teacherName"
+                            android:layout_toEndOf="@id/imageTeacherProfile"
+                            android:layout_marginStart="12dp"
+                            android:text="Computer Programming"
+                            android:textColor="#777777"
+                            android:textSize="12sp" />
+
+                        <LinearLayout
+                            android:layout_below="@id/submitAbsenceRequest"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="8dp"
+                                app:backgroundTint="#5C7BD1"
+                                app:fabCustomSize="32dp"
+                                app:srcCompat="@android:drawable/ic_menu_edit"
+                                app:tint="#FFFFFF" />
+
+                            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:backgroundTint="#5C7BD1"
+                                app:fabCustomSize="32dp"
+                                app:srcCompat="@android:drawable/ic_input_add"
+                                app:tint="#FFFFFF" />
+
+                        </LinearLayout>
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:layout_marginBottom="16dp"
+                    app:cardBackgroundColor="#FFF5E9"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="0dp"
+                    xmlns:android="http://schemas.android.com/apk/res/android">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="12dp">
+
+                        <ImageView
+                            android:layout_marginTop="10dp"
+                            android:id="@+id/imageTeacherProfile"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/ic_avatar_placeholder" />
+
+                        <TextView
+                            android:id="@+id/submitAbsenceRequest"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentTop="true"
+                            android:background="@drawable/bg_black_capsule"
+                            android:paddingHorizontal="14dp"
+                            android:paddingVertical="3dp"
+                            android:layout_marginTop="10dp"
+                            android:text="Enter"
+                            android:clickable="true"
+                            android:textColor="#FFFFFF"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:id="@+id/teacherName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_toStartOf="@id/submitAbsenceRequest"
+                            android:layout_toEndOf="@id/imageTeacherProfile"
+                            android:text="Prof. Sarah Johnson"
+                            android:textColor="#000000"
+                            android:layout_marginTop="10dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/subject"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/teacherName"
+                            android:layout_toEndOf="@id/imageTeacherProfile"
+                            android:layout_marginStart="12dp"
+                            android:text="Computer Programming"
+                            android:textColor="#777777"
+                            android:textSize="12sp" />
+
+                        <LinearLayout
+                            android:layout_below="@id/submitAbsenceRequest"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="8dp"
+                                app:backgroundTint="#5C7BD1"
+                                app:fabCustomSize="32dp"
+                                app:srcCompat="@android:drawable/ic_menu_edit"
+                                app:tint="#FFFFFF" />
+
+                            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:backgroundTint="#5C7BD1"
+                                app:fabCustomSize="32dp"
+                                app:srcCompat="@android:drawable/ic_input_add"
+                                app:tint="#FFFFFF" />
+
+                        </LinearLayout>
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerAbsenceRequestStudent"
                     android:layout_width="match_parent"
@@ -45,6 +218,7 @@
                     android:nestedScrollingEnabled="false" />
 
             </LinearLayout>
+
         </ScrollView>
     </androidx.cardview.widget.CardView>
 </RelativeLayout>

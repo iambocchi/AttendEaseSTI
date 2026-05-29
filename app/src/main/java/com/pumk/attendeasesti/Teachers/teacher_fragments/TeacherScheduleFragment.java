@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -27,6 +28,9 @@ public class TeacherScheduleFragment extends Fragment {
     private TeacherScheduleAdapter adapter;
     private FirebaseFirestore db;
 
+    // Teacher info views from your XML
+    private TextView teacherName, teacherEmail, teacherDepartment;
+
     public TeacherScheduleFragment() {}
 
     @Nullable
@@ -44,32 +48,40 @@ public class TeacherScheduleFragment extends Fragment {
 
         db = FirebaseFirestore.getInstance();
 
-        recyclerView = view.findViewById(R.id.recyclerTeachersMySchedule);
+        // Bind teacher info views
+        teacherName       = view.findViewById(R.id.teacher_name);
+        teacherEmail      = view.findViewById(R.id.teacher_email);
+        teacherDepartment = view.findViewById(R.id.teacher_department);
 
+        recyclerView = view.findViewById(R.id.recyclerTeachersMySchedule);
         adapter = new TeacherScheduleAdapter(new ArrayList<>());
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
 
-        loadSubjects();
+        loadTeacherDataAndSubjects();
 
         return view;
     }
 
-    private void loadSubjects() {
-        // Step 1: Get the logged-in teacher's email
+    private void loadTeacherDataAndSubjects() {
         String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
 
-        // Step 2: Find the teacher document that matches the email
         db.collection("teachers")
                 .whereEqualTo("email", email)
                 .get()
                 .addOnSuccessListener(teacherSnapshots -> {
                     if (teacherSnapshots.isEmpty()) return;
 
-                    // Step 3: Get the teacher's document ID (their UID)
+                    // Step 1: Fill teacher info card at the top
+                    String name       = teacherSnapshots.getDocuments().get(0).getString("name");
+                    String dept       = teacherSnapshots.getDocuments().get(0).getString("department");
                     String teacherDocId = teacherSnapshots.getDocuments().get(0).getId();
 
-                    // Step 4: Fetch the Subjects subcollection using that document ID
+                    teacherName.setText(name != null ? name : "N/A");
+                    teacherEmail.setText(email);
+                    teacherDepartment.setText(dept != null ? dept : "N/A");
+
+                    // Step 2: Fetch Subjects subcollection
                     db.collection("teachers")
                             .document(teacherDocId)
                             .collection("Subjects")
@@ -78,11 +90,9 @@ public class TeacherScheduleFragment extends Fragment {
 
                                 List<SubjectModel> subjectList = new ArrayList<>();
                                 for (QueryDocumentSnapshot doc : snapshots) {
-                                    // Document ID = subject name, fields = day, time
                                     String subjectName = doc.getId();
                                     String day         = doc.getString("day");
                                     String time        = doc.getString("time");
-
                                     subjectList.add(new SubjectModel(subjectName, day, time));
                                 }
 
